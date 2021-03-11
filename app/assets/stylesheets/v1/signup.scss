@@ -126,7 +126,7 @@ $color-primary: rgba(255, 159, 103, 1);
               border: 3px solid $color-primary;
             }
           }
-          button {
+          input[type="submit"] {
             @include setting-element-in-form();
             width: 100%;
             height: $height_input_button;

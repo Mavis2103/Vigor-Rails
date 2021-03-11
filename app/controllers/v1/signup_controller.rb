@@ -4,4 +4,16 @@ class V1::SignupController < ApplicationController
     # render json: @signup,status: 200
     # render templates:""
   end
+  def create
+    @email = params[:email]
+    @username = params[:username]
+    @password = params[:password]
+    # @createUser = User.create(email: @email, username: @username, password: @password)
+    @newUser = User.new(email: @email, username: @username, password: @password)
+    if @newUser.save
+      render json: 'Completed',status:200
+    else
+      render json: 'Failed'
+    end
+  end
 end

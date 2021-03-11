@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # get "/login",to:"login#index"
   # get "/signup",to:"signup#index"
   namespace:v1 do
-    resources :signup
+    resources :signup do
+      member do
+        post :createUser
+      end
+    end
     resources :login
   end
 end
