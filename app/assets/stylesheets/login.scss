@@ -1,0 +1,141 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+ul {
+  list-style-type: none;
+}
+$width_layout_left: 65%;
+$height_input_button: 50px;
+$bg-login: rgba(255, 255, 255, 0.4);
+$color-primary: rgba(255, 159, 103, 1);
+@mixin setting-element-in-form {
+  margin: 10px 0;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+}
+
+.page {
+  &__login_signup {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    padding: 2.5rem;
+    background-image: url(/images/c-d-x-PDX_a_82obo-unsplash.jpg);
+    background-size: cover;
+    height: 100vh;
+    > div {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background-color: $bg-login;
+      border-radius: 16px;
+      -webkit-border-radius: 16px;
+      -moz-border-radius: 16px;
+      -ms-border-radius: 16px;
+      -o-border-radius: 16px;
+      > div:nth-child(1) {
+        width: $width_layout_left;
+        height: 100%;
+        position: relative;
+        z-index: 0;
+        background-size: cover;
+        border-radius: 16px;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        -ms-border-radius: 16px;
+        -o-border-radius: 16px;
+        &::after {
+          content: "";
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          // background-color: $color-primary;
+          backdrop-filter: blur(5px);
+          border-radius: 16px;
+          -webkit-border-radius: 16px;
+          -moz-border-radius: 16px;
+          -ms-border-radius: 16px;
+          -o-border-radius: 16px;
+        }
+        color: #fff;
+        > div {
+          width: 60%;
+          height: 100%;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          p {
+            font-size: 42pt;
+            font-weight: bold;
+          }
+        }
+        ul {
+          display: flex;
+          li {
+            padding: 0 20px 0 0;
+            &:hover {
+              cursor: pointer;
+              font-weight: bolder;
+            }
+          }
+        }
+      }
+      > div:nth-child(2) {
+        width: 100%-$width_layout_left;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        p {
+          margin: 10px 0;
+          font-size: 10pt;
+          span {
+            font-weight: bold;
+            font-size: 12pt;
+            a {
+              color: $color-primary;
+              text-decoration: none;
+            }
+          }
+        }
+        form {
+          input {
+            @include setting-element-in-form();
+            width: 100%;
+            height: $height_input_button;
+            text-indent: 20px;
+            &:focus {
+              border: 3px solid $color-primary;
+            }
+          }
+          button {
+            @include setting-element-in-form();
+            width: 100%;
+            height: $height_input_button;
+            background-color: $color-primary;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14pt;
+          }
+        }
+      }
+    }
+  }
+}
