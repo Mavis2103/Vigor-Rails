@@ -8,7 +8,6 @@ class V1::SignupController < ApplicationController
     @email = params[:email]
     @username = params[:username]
     @password = params[:password]
-    # @createUser = User.create(email: @email, username: @username, password: @password)
     @newUser = User.new(email: @email, username: @username, password: @password)
     if @newUser.save
       render json: 'Completed',status:200

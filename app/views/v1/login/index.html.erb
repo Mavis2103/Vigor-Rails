@@ -20,11 +20,11 @@
         <h3>Tham gia cùng 10 triệu người dùng để cùng nhau tận hưởng những bài hát hay</h2>
       </header>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quia sed nemo perspiciatis cum accusantium vitae, numquam accusamus aliquam, sequi, quos totam. Dolores exercitationem vero, veniam officiis qui quia cum.</p>
-      <form action="">
-        <input type="email" name="" id="" placeholder="Email">
-        <input type="password" name="" id="" placeholder="Mật khẩu">
-        <input type="submit" value="Đăng nhập">
-      </form>
+      <%= form_with url:'login', method: 'POST' do |f| %>
+      <%= f.text_field :email, placeholder:'Email'%>
+      <%= f.password_field :password, placeholder:'Mật khẩu'%>
+      <%= f.submit "Đăng nhập", disable_with: 'Submiting...' %>
+      <%end %>
       <p style="margin:auto">Bạn chưa có tài khoản? <span><a href="/v1/signup">Đăng ký ngay</a></span></p>
     </div>
   </div>
