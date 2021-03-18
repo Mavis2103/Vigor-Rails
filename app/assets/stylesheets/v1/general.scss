@@ -1,0 +1,52 @@
+.container {
+  margin: 0 auto;
+  width: 90%;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+@mixin button {
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.d-flex {
+  display: flex;
+}
+.fs__text--smallest {
+  font-size: 12px;
+}
+.fs__text--small {
+  font-size: 14px;
+}
+.fs__body__text--1 {
+  font-size: 16px;
+}
+.fs__body__text--2 {
+  font-size: 18px;
+}
+.fs__subtitle {
+  font-size: 18px;
+}
+.fs__title--1 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.fs__title--2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+.fs__main__title--1 {
+  font-weight: bold;
+  font-size: 32px;
+}
+.fs__main__title--2 {
+  font-weight: bold;
+  font-size: 38px;
+}
+.fs__main__title--3 {
+  font-weight: bold;
+  font-size: 42px;
+}

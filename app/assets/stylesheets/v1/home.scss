@@ -1,0 +1,99 @@
+// Place all the styles related to the v1/home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "../application.scss";
+$color-primary: rgba(255, 159, 103, 1);
+.home__header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__link {
+    a {
+      font-weight: bold;
+      margin: 0 10px;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+  &__button {
+    font-weight: bold;
+    a:nth-child(1) {
+      @include button;
+      background-color: $color-primary;
+      color: white;
+    }
+    a:nth-child(2) {
+      @include button;
+      color: #000;
+      box-shadow: 0 0 0 2px $color-primary inset;
+    }
+  }
+  &__logo {
+    font-size: 42px;
+    font-weight: bold;
+    color: $color-primary;
+  }
+}
+.home__main {
+  $height: 700px;
+  $margin: 30px;
+  &__slide {
+    width: 100%;
+    height: 500px;
+    background-color: gray;
+    border-radius: 16px;
+  }
+  &--left {
+    width: 60%;
+    height: 700px;
+    padding-right: $margin;
+    margin-top: $margin;
+    > div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &--top {
+      width: 100%;
+      height: 400px;
+      background-color: gray;
+      border-radius: 16px;
+    }
+    &--bottom {
+      width: 100%;
+      height: $height - $margin - 400px;
+      background-color: gray;
+      border-radius: 16px;
+    }
+  }
+  &--right {
+    width: 40%;
+    height: $height;
+    margin-top: $margin;
+    > div {
+      height: 100%;
+      background-color: gray;
+      border-radius: 16px;
+    }
+  }
+  &__topCover {
+    // display: flex;
+    margin-top: $margin;
+    .slide {
+      display: flex;
+      overflow: hidden;
+      &__element {
+        $size: 180px;
+        min-width: $size;
+        height: $size;
+        background-color: gray;
+        margin-right: 20px;
+        border-radius: 16px;
+      }
+    }
+  }
+}
