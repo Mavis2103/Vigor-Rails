@@ -1,4 +1,5 @@
 class V1::SignupController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @signup = User.all;
     # render json: @signup,status: 200
@@ -8,7 +9,8 @@ class V1::SignupController < ApplicationController
     @email = params[:email]
     @username = params[:username]
     @password = params[:password]
-    @newUser = User.new(email: @email, username: @username, password: @password)
+    # @newUser = User.new(email: @email, username: @username, password: @password)
+      @newUser = User.create(email: @email, username: @username, password: @password)
     if @newUser.save
       render json: 'Completed',status:200
     else

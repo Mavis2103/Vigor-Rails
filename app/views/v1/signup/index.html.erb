@@ -23,6 +23,7 @@
       <%= f.text_field :email, placeholder:"Email" %>
       <%= f.text_field :username, placeholder:"Tên người dùng" %>
       <%= f.password_field :password, placeholder:"Password" %>
+      <%# <%= f.password_field :password_confirmation, placeholder:"Retype password" %> %>
       <%= f.submit "Đăng ký", disable_with: 'Submiting...'%>
       <% end %>
       <p style="margin:auto">Bạn đã có tài khoản ? <span><a href="/v1/login">Đăng nhập ngay</a></span></p>
