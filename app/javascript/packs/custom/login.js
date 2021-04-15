@@ -1,26 +1,27 @@
-let btnLogin = document.getElementById('Login');
+let btnLogin = document.getElementById("Login");
 let rs;
 let fetchLogin = async () => {
-  let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
-  let url = '/v1/login';
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  let url = "/v1/login";
   let rq = await fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: email,
       password: password,
     }),
     // redirect: 'http://localhost:3000/',
-  }).then(fjson => fjson.json());
+  }).then((fjson) => fjson.json());
   rs = rq;
-}
-console.log(localStorage.getItem('token'));
-btnLogin.addEventListener('click', async (e) => {
+};
+console.log(localStorage.getItem("token"));
+btnLogin.addEventListener("click", async (e) => {
   e.preventDefault();
   await fetchLogin();
-  localStorage.setItem('token', rs.jwt);
-  window.location.assign('http://localhost:3000/');
-})
+  localStorage.setItem("token", rs.jwt);
+  localStorage.setItem("info", rs.info);
+  window.location.assign("http://localhost:3000/");
+});
