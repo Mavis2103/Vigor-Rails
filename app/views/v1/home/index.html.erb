@@ -14,32 +14,145 @@
     </nav>
   </header>
   <main class="home__main">
-    <div class="home__main__slide"></div>
-    <div class="d-flex">
-      <div class="home__main--left">
-        <p class="fs__title--2">Bảng xếp hạng</p>
-        <div>
-          <div class="home__main--left--top"></div>
-          <div class="home__main--left--bottom"></div>
-        </div>
+ <div class="MainPage__header">
+   <div class="MainPage__header-avatarNOption">
+      <a href="/profile">
+         <div class="MainPage__header-avatarNUserame">
+            <div class="MuiAvatar-root MuiAvatar-circle MainPage__header-avatarNUserame-avatar"><img alt="avatar" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" class="MuiAvatar-img"></div>
+            <strong class="MainPage__header-avatarNUserame-username">Khale</strong>
+         </div>
+      </a>
+      <div class="MainPage__header-option">
+         <button class="MuiButtonBase-root MuiButton-root MuiButton-text MainPage__header-option-setting" tabindex="0" type="button">
+            <span class="MuiButton-label">
+               <div class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault">
+                  <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                     <path transform="scale(1.2, 1.2)" d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"></path>
+                  </svg>
+               </div>
+            </span>
+         </button>
+         <button class="MuiButtonBase-root MuiButton-root MuiButton-text MainPage__header-option-darkMode" tabindex="0" type="button">
+            <span class="MuiButton-label">
+               <div class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault">
+                  <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                     <path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"></path>
+                  </svg>
+               </div>
+            </span>
+         </button>
       </div>
-      <div class="home__main--right">
-        <p class="fs__title--2">Đề xuất</p>
-        <div></div>
+   </div>
+   <div class="MainPage__header-input">
+      <form class="MainPage__header-form" enctype="multipart/form-data"><textarea rows="1" type="text" placeholder="Giai điệu của bạn hôm nay là gì?" class="statusInput" style="height: 40px !important;"></textarea><input type="file" id="MainPage__imageUpload" accept=".jpeg, .jpg, .png, .gif, .tiff, .psd, .pdf, .eps, .ai, .indd, .raw"><input type="file" id="MainPage__videoUpload" accept=".mp4, .webm, .mpg, .mp2, .mpeg, .mpv, .ogg, .mov, .m4p, .m4v, .wmv, .avchd"><input type="file" id="MainPage__soundUpload" accept=".mp3, .wav, .oog, .aac, .flac, .wma, .mp4a, . ogg, .amr, .aiff, .opus"></form>
+   </div>
+   <div class="MainPage__header-uploadOptionBody"></div>
+   <div class="MainPage__header-uploadOption">
+      <div class="MainPage__header-uploadOption-option">
+         <div class="MainPage__header-soundUpload">
+            <label for="MainPage__soundUpload">
+               <div class="MainPage__soundUpload--upload">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                     <path d="M1 13h-1v-1h1v1zm22-1h-1v1h1v-1zm-20-1h-1v3h1v-3zm18 0h-1v3h1v-3zm-14 
+                        0h-1v3h1v-3zm10-1h-1v5h1v-5zm-12 0h-1v5h1v-5zm14-1h-1v7h1v-7zm-10 0h-1v7h1v-7zm2-2h-1v10h1v-10zm4 
+                        0h-1v10h1v-10zm-2-2h-1v14h1v-14z"></path>
+                  </svg>
+               </div>
+            </label>
+         </div>
+         <div class="MainPage__header-videoUpload">
+            <label for="MainPage__videoUpload">
+               <div class="MainPage__videoUpload--upload">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                     <path d="M9 16.985v-10.021l9 5.157-9 4.864zm4-14.98c5.046.504 9 4.782 9 9.97 
+                        0 1.467-.324 2.856-.892 4.113l1.738 1.006c.732-1.555 1.154-3.285 1.154-5.119 
+                        0-6.303-4.842-11.464-11-11.975v2.005zm-10.109 14.082c-.568-1.257-.891-2.646-.891-4.112 
+                        0-5.188 3.954-9.466 9-9.97v-2.005c-6.158.511-11 5.672-11 11.975 0 1.833.421 
+                        3.563 1.153 5.118l1.738-1.006zm17.213 1.734c-1.817 2.523-4.769 4.175-8.104 
+                        4.175s-6.288-1.651-8.105-4.176l-1.746 1.011c2.167 3.122 5.768 5.169 9.851 
+                        5.169 4.082 0 7.683-2.047 9.851-5.168l-1.747-1.011z"></path>
+                  </svg>
+               </div>
+            </label>
+         </div>
+         <div class="MainPage__header-imageUpload">
+            <label for="MainPage__imageUpload">
+               <div class="MainPage__imageUpload--upload">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                     <path d="M10 15c0-.552.448-1 1.001-1s.999.448.999 1-.446 1-.999 1-1.001-.448-1.001-1zm6.2 
+                        0l-1.7 2.6-1.3-1.6-3.2 4h10l-3.8-5zm7.8-5v14h-18v-14h18zm-2 2h-14v10h14v-10zm-6.462-9.385l2.244 
+                        5.385h2.167l-3.334-8-16.615 6.923 4 9.663v-5.265l-1.384-3.321 12.922-5.385z"></path>
+                  </svg>
+               </div>
+            </label>
+         </div>
       </div>
-    </div>
-    <div style="height: 50px"></div>
-    <div class="home__main__topCover">
-      <p class="fs__title--2">Top Cover</p>
-      <div class="slide">
-        <div class="slide__element"></div>
-        <div class="slide__element"></div>
-        <div class="slide__element"></div>
-        <div class="slide__element"></div>
-        <div class="slide__element"></div>
-        <div class="slide__element"></div>
+      <div class="MainPage__header-uploadOption-upload"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained postBtn Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiButton-label">Đăng</span></button></div>
+   </div>
+</div>
+ <div class="MainPage__feeds">
+   <div class="MainPage__feedTitle">
+      <h3>Dành cho bạn</h3>
+   </div>
+   <div class="masonry-grid">
+      <div class="masonry-grid_column" style="width: 100%;">
+         <div class="MainPage__feed">
+            <div class="MainPage__feed-header">
+               <div class="MainPage__feed-headerAvatarNInfo">
+                  <div class="MainPage__feed-headerAvatar">
+                     <a href="/profile/5fe0c2259994de39a8963511">
+                        <div class="MuiAvatar-root MuiAvatar-circle"><img alt="avatar" src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg" class="MuiAvatar-img"></div>
+                     </a>
+                  </div>
+                  <div class="MainPage__feed-headerInfo">
+                     <strong class="MainPage__feed-headerInfo-username">Demowithavatar</strong>
+                     <p class="MainPage__feed-headerInfo-createAt">3 tháng trước</p>
+                     <%# <div class="MuiCollapse-container MainPage__feed-headerInfo-detail MuiCollapse-hidden" style="min-height: 0px;">
+                        <div class="MuiCollapse-wrapper">
+                           <div class="MuiCollapse-wrapperInner">chủ nhật, 10 tháng 1 năm 2021 15:50</div>
+                        </div>
+                     </div> %>
+                  </div>
+               </div>
+               <div class="MainPage__feed-headerOption">
+                  <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                     <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+                  </svg>
+               </div>
+            </div>
+            <div class="MainPage__feed-body">
+               <div class="MainPage__feed-bodyTitle">
+                  <p>w</p>
+               </div>
+               <div class="MainPage__feed-bodyContent"></div>
+               <div class="MainPage__feed-bodyReaction">
+                  <div class="MainPage__feed-bodyReaction-like">
+                     <svg class="MuiSvgIcon-root MainPage__feed-bodyReaction-like--like" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                     </svg>
+                     <p class="MainPage__feed-bodyReaction-like-likeNumber">1</p>
+                  </div>
+                  <div class="MainPage__feed-bodyReaction-cmt">
+                     <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"></path>
+                     </svg>
+                     1
+                  </div>
+               </div>
+               <div class="MainPage__feed-bodyComment">
+                  <div class="MainPage__feed-bodyComment-commenters">
+                     <div class="MuiAvatar-root MuiAvatar-circle MainPage__feed-bodyComment-avatar"><img alt="avatar" src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg" class="MuiAvatar-img"></div>
+                     <p class="MainPage__feed-bodyComment-text"><strong class="MainPage__feed-bodyComment-username">Demowithavatar</strong>alo</p>
+                  </div>
+               </div>
+            </div>
+            <div class="MainPage__feed-comment">
+               <form class="MainPage__feed-commentForm"><input class="MainPage__feed-commentInput" type="text" placeholder="Thêm bình luận..."><button class="MainPage__feed-commentPostBtn"></button></form>
+            </div>
+         </div>
       </div>
-    </div>
-  </main>
+   </div>
+</div>
+</main>
 </section>
-<%= javascript_pack_tag "custom/home.js" %>
+<%# javascript_pack_tag "custom/home.js" %>
