@@ -13,7 +13,7 @@ class V1::LoginController < ApplicationController
         :username=> @userInfo[0].username,
       }.to_json
       # token = JWT.encode(@userInfo,Rails.application.credentials.secret_key_base,'HS256')
-      token = JWT.encode(@infoJson,Rails.application.credentials.secret_key_base,'HS256')
+      token = JWT.encode(@infoJson,'hfoaewkfowhkasjhfklsjfw'.secret_key_base,'HS256')
       render json: {jwt: token,info:@infoJson}
       # render json: user
       # render json:user.authenticate(params[:password])
