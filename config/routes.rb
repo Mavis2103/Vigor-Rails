@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :home
     resources :login
     resources :signup
+    resources :profile
   end
 end

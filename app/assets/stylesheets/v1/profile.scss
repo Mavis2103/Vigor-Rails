@@ -1,0 +1,80 @@
+// Place all the styles related to the profile controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "../application.scss";
+$color-primary: rgba(255, 159, 103, 1);
+$main-bg-color: #fcf9f7;
+$sub-bg-color: #FFA985;
+$text-color: #32323d;
+$text-hover-color: #FFC6AD;
+$input-bg-color: rgb(240, 240, 240);
+$inputHeight: 24px;
+@mixin resizeEffect() {
+  @if $inputHeight>24px {
+      background-color: none;
+  }
+}
+.Profile__header {
+  &-avatarNInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    .MuiAvatar-root {
+        width: 200px;
+        height: 200px;
+    }
+    &-avatar {
+      img {
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    input[type='file'] {
+        display: none;
+    }
+    &-info {
+        display: flex;
+        flex-direction: column;
+        h2 {
+            color: $text-color;
+            font-size: 100px;
+            font-weight: 1000;
+            margin-left: 23px;
+        }
+        &-stats {
+            display: flex;
+            p {
+                margin-left: 30px;
+            }
+            &-followerStat {
+                cursor: pointer;
+            }
+            &-followingStat {
+                cursor: pointer;
+            }
+        }
+        // .modal-container {
+        //     .modal-body {
+        //         // display: flex;
+        //         .Profile__followingModal-modal {
+        //             display: flex;
+        //         }
+        //     }
+        // }
+    }
+  }
+  &-action {
+    &-tabs {
+      &-tabsList {
+        display: flex;
+        flex-direction: row;
+        width: 38%;
+        justify-content: space-between;
+      }
+    }
+  }
+}
