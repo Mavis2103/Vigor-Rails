@@ -17,7 +17,7 @@ $inputHeight: 24px;
 .container{
   background-color:$main-bg-color;
   width: 100% !important;
-  height: 100vh !important;
+//   height: 100vh !important;
   padding: 0 5%;
 }
 .home__header {
@@ -27,8 +27,8 @@ $inputHeight: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  &__link {
+//   margin-bottom: 30px;
+  &__link {   
     a {
       font-weight: bold;
       margin: 0 10px;
@@ -36,6 +36,7 @@ $inputHeight: 24px;
         color: $color-primary;
       }
     }
+ 
   }
   &__button {
     font-weight: bold;
@@ -43,6 +44,7 @@ $inputHeight: 24px;
       @include button;
       background-color: $color-primary;
       color: white;
+      margin-right: 5px;
     }
     a:nth-child(2) {
       @include button;
@@ -62,7 +64,8 @@ $inputHeight: 24px;
   .MainPage__header {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: white;    
+    box-shadow: #ffe5da -15px 12px 15px 3px;
     padding: 15px 20px;
     border-radius: 15px;
     max-width: 70%;
@@ -105,6 +108,9 @@ $inputHeight: 24px;
               background-color:#BDBDBD;
               border: none;
               padding: 8px;
+              &:focus{
+                  outline: none;
+              }
              
             }
             .MuiButtonBase-root.MuiButton-root.MuiButton-text.MainPage__header-option-darkMode{
@@ -115,6 +121,9 @@ $inputHeight: 24px;
               border: none;
               padding: 8px;
              margin-left: 5px;
+             &:focus{
+                outline: none;
+            }    
             }
         
            
@@ -134,6 +143,25 @@ $inputHeight: 24px;
             resize: none;
             overflow: hidden;
             @include resizeEffect();
+        }
+        img{
+            border-radius: 20px;
+            transition: all .5s ease-in-out;
+            &:hover {
+                width: 78.54% !important;
+                transform: translateX(13.73%);
+            }
+        }
+        video{
+            @extend img;
+            &:focus{
+                outline: none;
+            }
+        }
+        audio{
+            &:focus{
+                outline: none;
+            }
         }
         Button {
             background-color: $sub-bg-color;
@@ -206,6 +234,7 @@ $inputHeight: 24px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    margin-top: 15px;
     .MainPage__header-uploadOption-option {
         display: flex;
         input[type='file'] {
@@ -270,7 +299,7 @@ $inputHeight: 24px;
               padding: 20px;
               background-color: white;
               border-radius: 15px;
-              box-shadow: #fcf3ed 0px 48px 85px 0px;
+              box-shadow: #ffe5da -15px 12px 15px 3px;
               margin-bottom: 20px;
               &-header {
                   display: flex;
@@ -311,13 +340,26 @@ $inputHeight: 24px;
                   }
               }
               &-body {
-                  border-bottom: 1px solid #BDBDBD;
-                  padding-bottom: 15px;
+                //   border-bottom: 1px solid #BDBDBD;
+                //  padding-bottom: 15px;
                   .MainPage__feed-bodyTitle {
-                      margin-bottom: 10px;
-                      white-space: pre-line;
+                      margin-bottom: 5px;
                       p {
                           font-size: 14px;
+                          font-weight: 500;
+                          margin-bottom:15px;
+                      }
+                      img{
+                          width: 100%;
+                          border-radius: 20px;
+                      }
+                      audio{
+                        width: 100%;
+                        
+                            &:focus{
+                                outline: none;
+                            }
+                        
                       }
                   }
                   .MainPage__feed-bodyContent {
@@ -390,16 +432,16 @@ $inputHeight: 24px;
                       &-commenters {
                           display: flex;
                           align-items: center;
-                          margin-bottom: 10px;
+                        //   margin-bottom: 10px;
                           .MainPage__feed-bodyComment-avatar {
                              
-                              .MuiAvatar-img{
-                                width: 32px;
-                                height: 32px;
-                                margin-right: 18px;
-                                border-radius:100%;
-                                object-fit: cover;
-                              }
+                            //   .MuiAvatar-img{
+                            //     width: 32px;
+                            //     height: 32px;
+                            //     margin-right: 18px;
+                            //     border-radius:100%;
+                            //     object-fit: cover;
+                            //   }
                           }
                           .MainPage__feed-bodyComment-text {
                               font-size: 14px;
