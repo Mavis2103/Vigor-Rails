@@ -1,5 +1,20 @@
 <section class="container">
-  
+  <header class="home__header">
+    <div class="home__header__logo">
+      <%= link_to 'VIGOR', root_path, class: 'home__header__logo'%>
+    </div>
+    <nav class="home__header__link">
+      <a href="">Trang Chủ</a>
+      <a href="">Cộng đồng</a>
+      <a href="">LIVE</a>
+      <a href="">FAQs</a>
+      <div class="search"></div>
+    </nav>
+    <nav class="home__header__button">
+      <a href="/v1/login">Đăng nhập</a>
+      <a href="/v1/signup">Đăng ký</a>
+    </nav>
+  </header>
   <div class="Profile__header">
    <div class="Profile__header-avatarNInfo">
       <div>
@@ -149,4 +164,3 @@
 </div>
 </div>
 </section>
-<%= javascript_pack_tag "custom/home.js" %>
