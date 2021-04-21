@@ -1,5 +1,20 @@
 <section class="container">
-
+  <header class="home__header">
+    <div class="home__header__logo">
+      <%= link_to 'VIGOR', root_path, class: 'home__header__logo'%>
+    </div>
+    <nav class="home__header__link">
+      <a href="">Trang Chủ</a>
+      <a href="">Cộng đồng</a>
+      <a href="">LIVE</a>
+      <a href="">FAQs</a>
+      <div class="search"></div>
+    </nav>
+    <nav class="home__header__button">
+      <a href="/v1/login">Đăng nhập</a>
+      <a href="/v1/signup">Đăng ký</a>
+    </nav>
+  </header>
   <main class="home__main">
     <div class="MainPage__header">
       <div class="MainPage__header-avatarNOption">
@@ -225,8 +240,7 @@
             </div>
             <div class="MainPage__feed-body">
               <div class="MainPage__feed-bodyTitle">
-                <img src="https://images.unsplash.com/photo-1464547304833-02f72e3835ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80">
-                <%# <p>Hello everyone <(")<p> %>
+                <p>w</p>
               </div>
               <div class="MainPage__feed-bodyContent"></div>
               <div class="MainPage__feed-bodyReaction">
@@ -259,217 +273,15 @@
               </div>
               <div class="MainPage__feed-bodyComment">
                 <div class="MainPage__feed-bodyComment-commenters">
-              
-                  <p class="MainPage__feed-bodyComment-text">
-                    <strong class="MainPage__feed-bodyComment-username"
-                      >Demowithavatar</strong
-                    >alo
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="MainPage__feed-comment">
-              <form class="MainPage__feed-commentForm">
-                <input
-                  class="MainPage__feed-commentInput"
-                  type="text"
-                  placeholder="Thêm bình luận..."
-                /><button class="MainPage__feed-commentPostBtn"></button>
-              </form>
-            </div>
-          </div>
-          <div class="MainPage__feed">
-            <div class="MainPage__feed-header">
-              <div class="MainPage__feed-headerAvatarNInfo">
-                <div class="MainPage__feed-headerAvatar">
-                  <a href="/profile/5fe0c2259994de39a8963511">
-                    <div class="MuiAvatar-root MuiAvatar-circle">
-                      <img
-                        alt="avatar"
-                        src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg"
-                        class="MuiAvatar-img"
-                      />
-                    </div>
-                  </a>
-                </div>
-                <div class="MainPage__feed-headerInfo">
-                  <strong class="MainPage__feed-headerInfo-username"
-                    >Demowithavatar</strong
-                  >
-                  <p class="MainPage__feed-headerInfo-createAt">
-                    3 tháng trước
-                  </p>
-                  <%#
                   <div
-                    class="MuiCollapse-container MainPage__feed-headerInfo-detail MuiCollapse-hidden"
-                    style="min-height: 0px"
+                    class="MuiAvatar-root MuiAvatar-circle MainPage__feed-bodyComment-avatar"
                   >
-                    <div class="MuiCollapse-wrapper">
-                      <div class="MuiCollapse-wrapperInner">
-                        chủ nhật, 10 tháng 1 năm 2021 15:50
-                      </div>
-                    </div>
+                    <img
+                      alt="avatar"
+                      src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg"
+                      class="MuiAvatar-img"
+                    />
                   </div>
-                  %>
-                </div>
-              </div>
-              <div class="MainPage__feed-headerOption">
-                <svg
-                  class="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div class="MainPage__feed-body">
-              <div class="MainPage__feed-bodyTitle">
-                <p>Hello everyone <(")<p>
-                <img src="https://scontent.fdad2-1.fna.fbcdn.net/v/t1.6435-9/174480894_905533740013263_3661048662227330860_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=txA7G1UNz0cAX8IX9pA&_nc_ht=scontent.fdad2-1.fna&oh=e9afbc1a9016e8ff7f0e34038f1bd21d&oe=60A22B4A">
-              </div>
-              <div class="MainPage__feed-bodyContent"></div>
-              <div class="MainPage__feed-bodyReaction">
-                <div class="MainPage__feed-bodyReaction-like">
-                  <svg
-                    class="MuiSvgIcon-root MainPage__feed-bodyReaction-like--like"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    ></path>
-                  </svg>
-                  <p class="MainPage__feed-bodyReaction-like-likeNumber">1</p>
-                </div>
-                <div class="MainPage__feed-bodyReaction-cmt">
-                  <svg
-                    class="MuiSvgIcon-root"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"
-                    ></path>
-                  </svg>
-                  1
-                </div>
-              </div>
-              <div class="MainPage__feed-bodyComment">
-                <div class="MainPage__feed-bodyComment-commenters">
-              
-                  <p class="MainPage__feed-bodyComment-text">
-                    <strong class="MainPage__feed-bodyComment-username"
-                      >Demowithavatar</strong
-                    >alo
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="MainPage__feed-comment">
-              <form class="MainPage__feed-commentForm">
-                <input
-                  class="MainPage__feed-commentInput"
-                  type="text"
-                  placeholder="Thêm bình luận..."
-                /><button class="MainPage__feed-commentPostBtn"></button>
-              </form>
-            </div>
-          </div>
-          <div class="MainPage__feed">
-            <div class="MainPage__feed-header">
-              <div class="MainPage__feed-headerAvatarNInfo">
-                <div class="MainPage__feed-headerAvatar">
-                  <a href="/profile/5fe0c2259994de39a8963511">
-                    <div class="MuiAvatar-root MuiAvatar-circle">
-                      <img
-                        alt="avatar"
-                        src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg"
-                        class="MuiAvatar-img"
-                      />
-                    </div>
-                  </a>
-                </div>
-                <div class="MainPage__feed-headerInfo">
-                  <strong class="MainPage__feed-headerInfo-username"
-                    >Demowithavatar</strong
-                  >
-                  <p class="MainPage__feed-headerInfo-createAt">
-                    3 tháng trước
-                  </p>
-                  <%#
-                  <div
-                    class="MuiCollapse-container MainPage__feed-headerInfo-detail MuiCollapse-hidden"
-                    style="min-height: 0px"
-                  >
-                    <div class="MuiCollapse-wrapper">
-                      <div class="MuiCollapse-wrapperInner">
-                        chủ nhật, 10 tháng 1 năm 2021 15:50
-                      </div>
-                    </div>
-                  </div>
-                  %>
-                </div>
-              </div>
-              <div class="MainPage__feed-headerOption">
-                <svg
-                  class="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div class="MainPage__feed-body">
-              <div class="MainPage__feed-bodyTitle">
-                <p>Hello everyone <(")<p>
-              <audio controls>
-                <source src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-
-              </div>
-              <div class="MainPage__feed-bodyContent"></div>
-              <div class="MainPage__feed-bodyReaction">
-                <div class="MainPage__feed-bodyReaction-like">
-                  <svg
-                    class="MuiSvgIcon-root MainPage__feed-bodyReaction-like--like"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    ></path>
-                  </svg>
-                  <p class="MainPage__feed-bodyReaction-like-likeNumber">1</p>
-                </div>
-                <div class="MainPage__feed-bodyReaction-cmt">
-                  <svg
-                    class="MuiSvgIcon-root"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"
-                    ></path>
-                  </svg>
-                  1
-                </div>
-              </div>
-              <div class="MainPage__feed-bodyComment">
-                <div class="MainPage__feed-bodyComment-commenters">
-              
                   <p class="MainPage__feed-bodyComment-text">
                     <strong class="MainPage__feed-bodyComment-username"
                       >Demowithavatar</strong

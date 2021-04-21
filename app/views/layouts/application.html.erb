@@ -12,12 +12,64 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%# javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  
+  <!-- <style>
+    .home__header {
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      .home__header__link a {
+          font-weight: bold;
+          margin: 0 10px;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+        .home__header__link a:hover {
+          color: $color-primary;
+        }
+      .home__header__button {
+        font-weight: bold;
+      }
+      .home__header__button a:nth-child(1) {
+          padding: 10px 15px;
+          border-radius: 8px;
+          background-color: $color-primary;
+          color: white;
+      }
+      .home__header__button a:nth-child(2) {
+          padding: 10px 15px;
+          border-radius: 8px;
+          color: #000;
+          box-shadow: 0 0 0 2px $color-primary inset;
+      }
+      .home__header__logo {
+        font-size: 42px;
+        font-weight: bold;
+        color: $color-primary;
+      }
+    }
+  </style> -->
 </head>
 
 <body>
-
-  <%= render "layouts/header" %>
+  <!-- <header class="home__header">
+    <div class="home__header__logo">Vigor</div>
+    <nav class="home__header__link">
+      <a href="">Trang Chủ</a>
+      <a href="">Cộng đồng</a>
+      <a href="">LIVE</a>
+      <a href="">FAQs</a>
+      <div class="search"></div>
+    </nav>
+    <nav class="home__header__button">
+      <a href="/v1/login">Đăng nhập</a>
+      <a href="/v1/signup">Đăng ký</a>
+    </nav>
+  </header> -->
   <%= yield %>
 </body>
 
