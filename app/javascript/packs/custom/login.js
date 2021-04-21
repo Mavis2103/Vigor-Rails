@@ -1,5 +1,19 @@
 let btnLogin = document.getElementById("Login");
 let rs;
+
+(async () => {
+  let token = localStorage.getItem("token");
+  if (!!token) {
+    await fetch("/", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    window.location.assign("http://localhost:3000/v1/home");
+  }
+})();
+
 let fetchLogin = async () => {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
@@ -23,5 +37,5 @@ btnLogin.addEventListener("click", async (e) => {
   await fetchLogin();
   localStorage.setItem("token", rs.jwt);
   localStorage.setItem("info", rs.info);
-  window.location.assign("http://localhost:3000/");
+  window.location.assign("http://localhost:3000/v1/home");
 });
