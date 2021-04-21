@@ -1,7 +1,9 @@
 class V1::LoginController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  # before_action :authorized, only: [:auto_login]
+  skip_before_action :verify_authenticity_token,:require_jwt,only:[:index,:create]
   def index
+    if(request.headers['Authorization'])
+      render '/v1/home/index'
+    end
   end
   def create
     @user = User.find_by(email: params[:email])

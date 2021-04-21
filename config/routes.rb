@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   # root "login#index"
   # get "/login",to:"login#index"
   # get "/signup",to:"signup#index"
-  root 'v1/home#index'
+  root 'v1/login#index'
   namespace:v1 do
     resources :home
     resources :login
     resources :signup
     resources :profile
+    resources :comment
   end
 end

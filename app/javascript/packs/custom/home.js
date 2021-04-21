@@ -1,18 +1,23 @@
 let token = localStorage.getItem("token");
 let divButton = document.querySelector(".home__header__button");
 let info = JSON.parse(localStorage.getItem("info"));
-if (!!token) {
-  divButton.innerHTML = "";
-  let logoutButton = document.createElement("a");
-  logoutButton.textContent = "Đăng xuất";
+(async () => {
+  if (!!token) {
+    divButton.innerHTML = "";
+    let logoutButton = document.createElement("a");
+    logoutButton.textContent = "Đăng xuất";
 
-  let name = document.createElement("a");
-  name.textContent = info.username;
+    let name = document.createElement("a");
+    name.textContent = info.username;
+    document.querySelector(
+      ".MainPage__header-avatarNUserame-username"
+    ).textContent = info.username;
+    divButton.appendChild(name);
+    divButton.appendChild(logoutButton);
+  }
+})();
 
-  divButton.appendChild(name);
-  divButton.appendChild(logoutButton);
-}
-
+let btn = document.querySelector(".postBtn");
 let mainPage_form = document.querySelector(".MainPage__header-form");
 let mainPage_content = document.getElementById("MainPage__content");
 let mainPage_image = document.getElementById("MainPage__imageUpload");
@@ -20,13 +25,27 @@ let mainPage_video = document.getElementById("MainPage__videoUpload");
 let mainPage_audio = document.getElementById("MainPage__soundUpload");
 let mainPage_submit = document.getElementById("MainPage__header-form__submit");
 
+let type;
+
+mainPage_content.addEventListener(
+  "input",
+  () => {
+    btn.style.backgroundColor = "#FF9F67";
+    btn.style.cursor = "pointer";
+  }
+  // { once: true }
+);
+
 let image;
-mainPage_image.addEventListener("change", () => {
+mainPage_image.addEventListener("change", async () => {
+  btn.style.backgroundColor = "#FF9F67";
+  btn.style.cursor = "pointer";
   let reader = new FileReader();
   let preview = document.createElement("img");
-  reader.readAsDataURL(mainPage_image.files[0]);
-  reader.onload = () => {
-    image = reader.result;
+  type = mainPage_image.files[0].type.replace("image/", "");
+  await reader.readAsDataURL(mainPage_image.files[0]);
+  reader.onload = async () => {
+    image = await reader.result;
     preview.src = image;
     preview.style.width = "100%";
     if (!!mainPage_form.childNodes[6]) {
@@ -40,12 +59,15 @@ mainPage_image.addEventListener("change", () => {
   };
 });
 let video;
-mainPage_video.addEventListener("change", () => {
+mainPage_video.addEventListener("change", async () => {
+  btn.style.backgroundColor = "#FF9F67";
+  btn.style.cursor = "pointer";
   let reader = new FileReader();
   let preview = document.createElement("video");
-  reader.readAsDataURL(mainPage_video.files[0]);
-  reader.onload = () => {
-    video = reader.result;
+  type = mainPage_video.files[0].type.replace("video/", "");
+  await reader.readAsDataURL(mainPage_video.files[0]);
+  reader.onload = async () => {
+    video = await reader.result;
     preview.src = video;
     preview.controls = true;
     preview.volume = 1;
@@ -61,12 +83,15 @@ mainPage_video.addEventListener("change", () => {
   };
 });
 let audio;
-mainPage_audio.addEventListener("change", () => {
+mainPage_audio.addEventListener("change", async () => {
+  btn.style.backgroundColor = "#FF9F67";
+  btn.style.cursor = "pointer";
   let reader = new FileReader();
   let preview = document.createElement("audio");
-  reader.readAsDataURL(mainPage_audio.files[0]);
-  reader.onload = () => {
-    audio = reader.result;
+  type = mainPage_audio.files[0].type.replace("audio/", "");
+  await reader.readAsDataURL(mainPage_audio.files[0]);
+  reader.onload = async () => {
+    audio = await reader.result;
     preview.src = audio;
     preview.controls = true;
     preview.volume = 1;
@@ -81,8 +106,33 @@ mainPage_audio.addEventListener("change", () => {
     console.log(reader.error);
   };
 });
-const addPOSTs = () => {
-  /* Data form img,video,audio,mainPage__content.value */
+setInterval(() => {
+  if (!!!image && !!!video && !!!audio && !!!mainPage_content.value) {
+    btn.style.backgroundColor = "gray";
+    btn.style.cursor = "not-allowed";
+  } else {
+    console.log("lol");
+    mainPage_submit.addEventListener("click", addPOSTs);
+  }
+}, 100);
+const addPOSTs = async () => {
+  const rq = await fetch("/v1/home", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      image: image,
+      video: video,
+      audio: audio,
+      type: type,
+      content: mainPage_content.value,
+    }),
+  }).then((x) => x.json());
+  if (rq.status === "success") {
+    window.location.reload();
+  }
 };
 
-mainPage_submit.addEventListener("click", addPOSTs);
+import "./comment";
