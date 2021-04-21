@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
         decoded_token = JWT.decode(valided_token,'$2y$12$QAbW96324MCLhx3TYw4aketywiNUIuG4eg0mszV6Ry/ANCNLLXez6',true)
         json_data = JSON.parse(decoded_token[0])
         p json_data["username"],json_data["email"]
-        @check = User.where(email: json_data["email"], username: json_data["username"],)
-        if @check.present?
+        @user_token = User.where(email: json_data["email"], username: json_data["username"],)
+        p token
+        if @user_token.present?
           return true
         else
           return false
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::Base
       #   Rails.logger.warn "Error decoding token "+e.to_s
       end
     end
-    def token_param
-      params.require(:home).permit(:content)
-    end
+    # def token_param
+    #   params.require(:home).permit(:content)
+    # end
 end

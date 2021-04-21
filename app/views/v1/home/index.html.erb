@@ -108,7 +108,7 @@
       </div>
       <div class="masonry-grid">
         <div class="masonry-grid_column" style="width: 100%">
-          <% @select.each do |data| %>
+          <% @select.each do |post| %>
           <div class="MainPage__feed">
             <div class="MainPage__feed-header">
               <div class="MainPage__feed-headerAvatarNInfo">
@@ -120,9 +120,9 @@
                   </a>
                 </div>
                 <div class="MainPage__feed-headerInfo">
-                  <strong class="MainPage__feed-headerInfo-username"><%= data.username %></strong>
+                  <strong class="MainPage__feed-headerInfo-username"><%= post.username %></strong>
                   <p class="MainPage__feed-headerInfo-createAt">
-                    <%= data.created_at %>
+                    <%= post.created_at %>
                   </p>
                   <%#
                   <div
@@ -146,16 +146,16 @@
             </div>
             <div class="MainPage__feed-body">
               <div class="MainPage__feed-bodyTitle">
-                <p><%= data.title %></p>
+                <p><%= post.title %></p>
               </div>
               <div class="MainPage__feed-bodyContent">
                 <%=
-                  if !data.selectedImgFile.nil?
-                    image_tag "/file/image/#{data.selectedImgFile}", width: '100%'
-                  elsif !data.selectedVidFile.nil?
-                    video_tag "/file/video/#{data.selectedVidFile}", width: '100%', controls: true, volume: '1'
-                  elsif !data.selectedAudFile.nil?
-                    audio_tag "/file/audio/#{data.selectedAudFile}", width: '100%', controls: true, volume: '1'
+                  if !post.selectedImgFile.nil?
+                    image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
+                  elsif !post.selectedVidFile.nil?
+                    video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
+                  elsif !post.selectedAudFile.nil?
+                    audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
                   end
                 %>
               </div>
@@ -174,23 +174,31 @@
                 </div>
               </div>
               <div class="MainPage__feed-bodyComment">
+                <% @comment.each do |cmt| %>
+                <% if cmt.post_id === post.id %>
                 <div class="MainPage__feed-bodyComment-commenters">
                   <div class="MuiAvatar-root MuiAvatar-circle MainPage__feed-bodyComment-avatar">
                     <img alt="avatar" src="https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg" class="MuiAvatar-img" />
                   </div>
                   <p class="MainPage__feed-bodyComment-text">
-                    <strong class="MainPage__feed-bodyComment-username">Demowithavatar</strong>alo
+                    <strong class="MainPage__feed-bodyComment-username"><%= cmt.username %></strong> <%= cmt.text %>
                   </p>
                 </div>
+                <% end %>
+                <% end %>
               </div>
             </div>
             <div class="MainPage__feed-comment">
-              <form class="MainPage__feed-commentForm">
-                <input class="MainPage__feed-commentInput" type="text" placeholder="Thêm bình luận..." /><button class="MainPage__feed-commentPostBtn"></button>
-              </form>
+              <div class="MainPage__feed-commentForm">
+                <input class="MainPage__feed-commentInput" data-post_id=<%= post.id %> type="text" placeholder="Thêm bình luận..." />
+                <%
+=begin%>
+                <button class="MainPage__feed-commentPostBtn"></button>
+                <%
+=end%>
+              </div>
             </div>
           </div>
-
           <% end %>
         </div>
       </div>

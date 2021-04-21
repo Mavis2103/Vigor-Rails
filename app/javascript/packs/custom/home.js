@@ -134,3 +134,5 @@ const addPOSTs = async () => {
     window.location.reload();
   }
 };
+
+import "./comment";

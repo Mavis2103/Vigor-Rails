@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :login
     resources :signup
     resources :profile
+    resources :comment
   end
 end
