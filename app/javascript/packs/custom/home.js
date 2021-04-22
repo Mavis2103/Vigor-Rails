@@ -58,7 +58,8 @@ mainPage_image.addEventListener("change", async () => {
   reader.onload = async () => {
     image = await reader.result;
     preview.src = image;
-    preview.style.width = "100%";
+    preview.style.width = "30%";
+    // preview.style.height = "30%";
     if (!!mainPage_form.childNodes[6]) {
       mainPage_form.replaceChild(preview, mainPage_form.childNodes[6]);
     } else {
@@ -82,7 +83,7 @@ mainPage_video.addEventListener("change", async () => {
     preview.src = video;
     preview.controls = true;
     preview.volume = 1;
-    preview.style.width = "100%";
+    preview.style.width = "30%";
     if (!!mainPage_form.childNodes[6]) {
       mainPage_form.replaceChild(preview, mainPage_form.childNodes[6]);
     } else {
