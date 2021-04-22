@@ -1,151 +1,153 @@
 <section class="container">
-  <div class="Profile__header">
-   <div class="Profile__header-avatarNInfo">
-      <div>
-         <label htmlFor="updateAvatar">
-            <div class="updateAvatar--upload">
-               <!-- {imageFile ? ( -->
-               <div class="MainPage__header-uploadOptionBody-imageDiv">
-                  <div class="Profile__header-avatarNInfo-avatar">
-                   <img src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" class="MainPage__header-uploadOptionBody-imageBody" alt="" width="100px" height="100px" />
+  <div class="subContainer">
+     <div class="Profile__header">
+      <div class="Profile__header-avatarNInfo">
+         <div>
+            <label htmlFor="updateAvatar">
+               <div class="updateAvatar--upload">
+                  <!-- {imageFile ? ( -->
+                  <div class="MainPage__header-uploadOptionBody-imageDiv">
+                     <div class="Profile__header-avatarNInfo-avatar">
+                      <img src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" class="MainPage__header-uploadOptionBody-imageBody" alt="" width="100px" height="100px" />
+                     </div>
                   </div>
+                  <!-- ) : ( -->
+                  <!-- getUsername.profilePicture ? ( -->
+                  <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" /> -->
+                  <!-- ) : ( -->
+                  <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src='' /> -->
+                  <!-- ) -->
+                  <!-- )} -->
                </div>
-               <!-- ) : ( -->
-               <!-- getUsername.profilePicture ? ( -->
-               <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" /> -->
-               <!-- ) : ( -->
-               <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src='' /> -->
-               <!-- ) -->
-               <!-- )} -->
-            </div>
-            <input
-               type="file"
-               name=""
-               id="updateAvatar"
-               accept=".jpeg, .jpg, .png, .jfif, .pjpeg, .pjp"
-               onChange={handleImageFileChange}
-             />
-         </label>
-
-         <!-- { -->
-         <!-- imageFile && ( -->
-         <!-- <Button onClick={updateProfilePicture} type="submit" variant="contained" class="postBtn">Đăng</Button> -->
-         <!-- ) -->
-         <!-- } -->
-      </div>
-      <div class="Profile__header-avatarNInfo-info">
-         <!-- {localStorage.getItem('jwt') && ( -->
-         <h2 class="Profile__header-avatarNInfo-info-username">KHale</h2>
-         <!-- )} -->
-         <div class="Profile__header-avatarNInfo-info-stats">
-            <p>
-              <!-- {myPosts && ( -->
-               <strong>3</strong>
-               <!-- )}  -->
-               bài viết
-            </p>
-            <p class="Profile__header-avatarNInfo-info-stats-followerStat">
-              <!-- {myPosts && ( -->
-               <strong onClick={handleShowFollwers}>2</strong>
-               <!-- )}  -->
-               Người theo dõi
-            </p>
-            <p class="Profile__header-avatarNInfo-info-stats-followingStat">Đang theo dõi
-              <!-- {myPosts && ( -->
-               <strong onClick={handleShow}>1</strong>
-               <!-- )} -->
-            </p>
+               <input
+                  type="file"
+                  name=""
+                  id="updateAvatar"
+                  accept=".jpeg, .jpg, .png, .jfif, .pjpeg, .pjp"
+                  onChange={handleImageFileChange}
+                />
+            </label>
+   
+            <!-- { -->
+            <!-- imageFile && ( -->
+            <!-- <Button onClick={updateProfilePicture} type="submit" variant="contained" class="postBtn">Đăng</Button> -->
+            <!-- ) -->
+            <!-- } -->
          </div>
-         <!-- {/* Followings modal */} -->
-         <!-- <Modal
-         // {...props}
-         show={modalShow}
-         size="lg"
-         aria-labelledby="contained-modal-title-vcenter"
-         centered
-         onHide={handleClose}
-         // key={liker._id}
-         >
-         <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">
-               Đang theo dõi
-            </Modal.Title>
-            <Avatar>
-               <CloseIcon
-                  onClick={handleClose}
-                  />
-            </Avatar>
-         </Modal.Header>
-         <ModalBody
-            class="Profile__followingModal"
-            bsPrefix='modal-body'
+         <div class="Profile__header-avatarNInfo-info">
+            <!-- {localStorage.getItem('jwt') && ( -->
+            <h2 class="Profile__header-avatarNInfo-info-username">KHale</h2>
+            <!-- )} -->
+            <div class="Profile__header-avatarNInfo-info-stats">
+               <p>
+                 <!-- {myPosts && ( -->
+                  <strong>3</strong>
+                  <!-- )}  -->
+                  bài viết
+               </p>
+               <p class="Profile__header-avatarNInfo-info-stats-followerStat">
+                 <!-- {myPosts && ( -->
+                  <strong onClick={handleShowFollwers}>2</strong>
+                  <!-- )}  -->
+                  Người theo dõi
+               </p>
+               <p class="Profile__header-avatarNInfo-info-stats-followingStat">Đang theo dõi
+                 <!-- {myPosts && ( -->
+                  <strong onClick={handleShow}>1</strong>
+                  <!-- )} -->
+               </p>
+            </div>
+            <!-- {/* Followings modal */} -->
+            <!-- <Modal
+            // {...props}
+            show={modalShow}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            onHide={handleClose}
+            // key={liker._id}
             >
-            {getUsername.following.map(listFollowing => (
-            <div key={listFollowing._id} class="Profile__followingModal-modal">
-               <Avatar class="Profile__followingModal-followingAvatar" alt="avatar" src={listFollowing.profilePicture} />
-               <h1>{listFollowing.username}</h1>
-            </div>
-            ))}
-         </ModalBody>
-         </Modal> -->
-         <!-- {/* Followers modal */} -->
-         <!-- <Modal
-         // {...props}
-         show={modalShowFollowers}
-         size="lg"
-         aria-labelledby="contained-modal-title-vcenter"
-         centered
-         onHide={handleCloseFollowers}
-         // key={liker._id}
-         >
-         <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">
-               Người theo dõi
-            </Modal.Title>
-            <Avatar>
-               <CloseIcon
-                  onClick={handleCloseFollowers}
-                  />
-            </Avatar>
-         </Modal.Header>
-         <Modal.Body class="Profile__followerModal">
-            {getUsername.followers.map(listFollower => (
-            <div key={listFollower._id} class="Profile__followerModal-modal">
-               <Avatar class="Profile__followerModal-followerAvatar" alt="avatar" src={listFollower.profilePicture} />
-               <h1>{listFollower.username}</h1>
-            </div>
-            ))}
-         </Modal.Body>
-         </Modal> -->
+            <Modal.Header>
+               <Modal.Title id="contained-modal-title-vcenter">
+                  Đang theo dõi
+               </Modal.Title>
+               <Avatar>
+                  <CloseIcon
+                     onClick={handleClose}
+                     />
+               </Avatar>
+            </Modal.Header>
+            <ModalBody
+               class="Profile__followingModal"
+               bsPrefix='modal-body'
+               >
+               {getUsername.following.map(listFollowing => (
+               <div key={listFollowing._id} class="Profile__followingModal-modal">
+                  <Avatar class="Profile__followingModal-followingAvatar" alt="avatar" src={listFollowing.profilePicture} />
+                  <h1>{listFollowing.username}</h1>
+               </div>
+               ))}
+            </ModalBody>
+            </Modal> -->
+            <!-- {/* Followers modal */} -->
+            <!-- <Modal
+            // {...props}
+            show={modalShowFollowers}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            onHide={handleCloseFollowers}
+            // key={liker._id}
+            >
+            <Modal.Header>
+               <Modal.Title id="contained-modal-title-vcenter">
+                  Người theo dõi
+               </Modal.Title>
+               <Avatar>
+                  <CloseIcon
+                     onClick={handleCloseFollowers}
+                     />
+               </Avatar>
+            </Modal.Header>
+            <Modal.Body class="Profile__followerModal">
+               {getUsername.followers.map(listFollower => (
+               <div key={listFollower._id} class="Profile__followerModal-modal">
+                  <Avatar class="Profile__followerModal-followerAvatar" alt="avatar" src={listFollower.profilePicture} />
+                  <h1>{listFollower.username}</h1>
+               </div>
+               ))}
+            </Modal.Body>
+            </Modal> -->
+         </div>
       </div>
-   </div>
-   <div class="Profile__header-action">
-      <div class="Profile__header-action-tabs">
-         <div class="Profile__header-action-tabs-tabsList">
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'TỔNG QUAN', root_path%>
-            </div>
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'BÀI VIẾT', '/v1/profile'%>
-            </div>
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'PLAYLIST', '/v1/profile'%>
-            </div>
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'NGHỆ SĨ', '/v1/profile'%>
-            </div>
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'ALBUM', '/v1/profile'%>
-            </div>
-            <div class="Profile__header-action-tabs-tabsList-tab">
-               <%= link_to 'TẢI LÊN', '/v1/profile'%>
+      <div class="Profile__header-action">
+         <div class="Profile__header-action-tabs">
+            <div class="Profile__header-action-tabs-tabsList">
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'TỔNG QUAN', root_path%>
+               </div>
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'BÀI VIẾT', '/v1/profile'%>
+               </div>
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'PLAYLIST', '/v1/profile'%>
+               </div>
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'NGHỆ SĨ', '/v1/profile'%>
+               </div>
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'ALBUM', '/v1/profile'%>
+               </div>
+               <div class="Profile__header-action-tabs-tabsList-tab">
+                  <%= link_to 'TẢI LÊN', '/v1/profile'%>
+               </div>
             </div>
          </div>
       </div>
    </div>
-</div>
-<div class="Profile__body">
-</div>
-</div>
+   <div class="Profile__body">
+   </div>
+   </div>
+  </div>
 </section>
 <%= javascript_pack_tag "custom/home.js", async: true%>

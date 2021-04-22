@@ -14,57 +14,38 @@ $inputHeight: 24px;
     background-color: none;
   }
 }
+@function resize($currentHeight) {
+  $currentHeight: $currentHeight + 10px;
+  @return $currentHeight;
+}
+* {
+  box-sizing: border-box;
+}
 .container {
-  background-color: $main-bg-color;
   width: 100% !important;
-//   height: 100vh !important;
-  padding: 0 5%;
+.subContainer{
+  width: 100%;
+  padding-top: 20px;
+  background:rgba(255, 255, 255, 0.2 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
 }
-.home__header {
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  &__link {
-    a {
-      font-weight: bold;
-      margin: 0 10px;
-      &:hover {
-        color: $color-primary;
-      }
-    }
-  }
-  &__button {
-    font-weight: bold;
-    a:nth-child(1) {
-      @include button;
-      background-color: $color-primary;
-      color: white;
-      margin-right: 5px;
-    }
-    a:nth-child(2) {
-      @include button;
-      color: #000;
-      box-shadow: 0 0 0 2px $color-primary inset;
-    }
-  }
-  &__logo {
-    font-size: 42px;
-    font-weight: bold;
-    color: $color-primary;
-  }
 }
+
+
 .home__main {
   $height: 700px;
   $margin: 30px;
   .MainPage__header {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    box-shadow: #ffe5da -15px 12px 15px 3px;
+    // background-color: white;
+    border: 1px solid whitesmoke;
+    background: rgba(255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    // box-shadow: whitesmoke -1px -1px 15px 1px;
     padding: 15px 20px;
     border-radius: 15px;
     max-width: 70%;
@@ -87,7 +68,9 @@ $inputHeight: 24px;
           }
           &-username {
             margin-left: 10px;
-            color: $text-color;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: #784e5ec4;
           }
         }
       }
@@ -104,8 +87,9 @@ $inputHeight: 24px;
         .MuiButtonBase-root.MuiButton-root.MuiButton-text.MainPage__header-option-setting {
           width: 40px;
           height: 40px;
+          fill: #784e5ec4;
           border-radius: 100%;
-          background-color: #bdbdbd;
+          background-color: whitesmoke;
           border: none;
           padding: 8px;
           &:focus{
@@ -114,9 +98,10 @@ $inputHeight: 24px;
         }
         .MuiButtonBase-root.MuiButton-root.MuiButton-text.MainPage__header-option-darkMode {
           width: 40px;
+          fill: #784e5ec4;
           height: 40px;
           border-radius: 100%;
-          background-color: #bdbdbd;
+          background-color: whitesmoke;
           border: none;
           padding: 8px;
           margin-left: 5px;
@@ -129,6 +114,11 @@ $inputHeight: 24px;
     &-input {
       display: flex;
       flex-direction: column;
+    //   .MainPage__header-form{
+    //   // p:empty:not(:focus)::before {
+    //   //   content: attr(data-placeholder);
+    //   // }
+    // }
       img{
         border-radius: 20px;
         transition: all .5s ease-in-out;
@@ -149,16 +139,18 @@ $inputHeight: 24px;
         }
     }
       .statusInput {
-        border: none;
-        border-radius: 50px;
+        // border: none;
+        border-radius: 15px;
         padding: 8px 15px;
         outline: none;
+        border: 2px solid whitesmoke;
+        background-color: rgba(240, 240, 240, 0.4);
         width: 100%;
         margin-bottom: 10px;
-        background-color: $input-bg-color;
+        // background-color: $input-bg-color;
         resize: none;
         overflow: hidden;
-        @include resizeEffect();
+        // @include resizeEffect();
        
       }
       Button {
@@ -242,6 +234,9 @@ $inputHeight: 24px;
       .MainPage__header-soundUpload {
         margin-right: 15px;
         .MainPage__soundUpload--upload {
+          svg{
+            fill: #784e5ec4;
+          }
           &:hover {
             cursor: pointer;
           }
@@ -250,6 +245,9 @@ $inputHeight: 24px;
       .MainPage__header-videoUpload {
         margin-right: 15px;
         .MainPage__videoUpload--upload {
+          svg{
+            fill: #784e5ec4;
+          }
           &:hover {
             cursor: pointer;
           }
@@ -257,6 +255,9 @@ $inputHeight: 24px;
       }
       .MainPage__header-imageUpload {
         .MainPage__imageUpload--upload {
+          svg{
+            fill: #784e5ec4;
+          }
           &:hover {
             cursor: pointer;
           }
@@ -288,6 +289,8 @@ $inputHeight: 24px;
       h3 {
         font-size: 28px;
         margin-bottom: 10px;
+        color: #ffffff;
+    text-shadow:   3px 3px 8px rgba(0, 0, 0, 0.9);
       }
     }
     .masonry-grid {
@@ -297,9 +300,11 @@ $inputHeight: 24px;
         background-clip: padding-box;
         .MainPage__feed {
           padding: 20px;
-          background-color: white;
+          // background-color: white;
+          border: 1px solid whitesmoke;
           border-radius: 15px;
-          box-shadow: #ffe5da -15px 12px 15px 3px;
+          background:rgba(255, 255, 255, 0.3 );
+          box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.35 );
           margin-bottom: 20px;
           &-header {
             display: flex;
@@ -321,10 +326,15 @@ $inputHeight: 24px;
               .MainPage__feed-headerInfo {
                 margin-left: 10px;
                 &-username {
+                  
+                    color: #784e5ec4;
+                  
                   margin: 0;
-                  font-size: 14px;
+                  font-size: 18px;
+                  font-weight: 600 !important;
                 }
                 &-createAt {
+                  color: #784e5ec4;
                   margin: 0;
                   font-size: 12px;
                   cursor: pointer;
@@ -338,7 +348,80 @@ $inputHeight: 24px;
                   background-color: white;
                 }
               }
+              
             }
+            .MainPage__feed-headerOptionDiv {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              .MainPage__feed-headerOption{
+                padding: 8px;
+                border-radius:100%;
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg{
+                  width: 16px;
+                }
+                &:hover{
+                  background-color: #ffe4d9;
+                  cursor: pointer;
+                } 
+              }
+              .MainPage__feed-headerOptionModal {
+                padding: 5px;
+                margin-top: 32px;
+                // background-color: #ffe4d9;#FFE6DB
+                background: rgba(255, 159, 103, 0.25 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 4px );
+                -webkit-backdrop-filter: blur( 4px );
+                border-radius: 10px;
+                border: 1px solid rgba( 255, 255, 255, 0.18 );
+                // border: 2px solid #bdbdbd;
+                border-radius: 7.5px;
+                display: none;
+                ul{
+                  width: 100px;
+                .MainPage__feed-headerOptionModal-item{
+                  cursor: pointer;
+                  padding: 1px;
+                  display: flex;
+                  align-items: center;
+                  // margin-bottom: 5px;
+                  padding: 8px 8px;
+                  // border-bottom: 1px solid #32323d;
+                  svg{
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 10px;
+                  }
+                  p{
+                    font-weight: 500;
+                  }
+                  &:hover{
+                    // background-color: #ffa985;
+                    border-radius: 3px;
+                    background: rgba( 255, 255, 255, 0.25 );
+                    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                    backdrop-filter: blur( 4px );
+                    -webkit-backdrop-filter: blur( 4px );
+                    border-radius: 7.5px;
+                    // border: 1px solid rgba( 255, 255, 255, 0.18 );
+                  }
+                }
+              }
+              }
+              &:hover {
+                .MainPage__feed-headerOptionModal {
+                  display: block;
+                  position: absolute;
+                  z-index: 10;
+                }
+              }
+            }
+            
           }
           &-body {
             // border-bottom: 1px solid #bdbdbd;
@@ -373,7 +456,8 @@ $inputHeight: 24px;
               // border-top: 1px solid #BDBDBD;
               // border-bottom: 1px solid #BDBDBD;
               border-radius: 12px;
-              border: 1px solid #bdbdbd;
+              background-color: rgba(240, 240, 240, 0.4);
+              border: 2px solid whitesmoke;
               padding: 10px;
               display: flex;
               margin-bottom: 15px;
@@ -414,6 +498,8 @@ $inputHeight: 24px;
               &-commenters {
                 display: flex;
                 align-items: center;
+                margin-top: 5px;
+                margin-bottom: 5px;
                 // margin-bottom: 10px;
                 // .MainPage__feed-bodyComment-avatar {
                 //   .MuiAvatar-img {
@@ -428,9 +514,15 @@ $inputHeight: 24px;
                 .MainPage__feed-bodyComment-text {
                   font-size: 14px;
                   margin-bottom: 5px;
+                  
                   .MainPage__feed-bodyComment-username {
                     margin-right: 5px;
                     font-size: 14px;
+                    font-weight: 600 !important;
+                  }
+                  #svgContainer{
+                    width: 20px;
+                    height: 20px;
                   }
                 }
               }
@@ -443,12 +535,12 @@ $inputHeight: 24px;
               .MainPage__feed-commentInput {
                 flex: 1;
                 outline: none;
-                border: none;
+                border: 2px solid whitesmoke;
                 border-radius: 50px;
                 padding: 8px 15px;
                 outline: none;
                 width: 100%;
-                background-color: $input-bg-color;
+                background-color: rgba(240, 240, 240, 0.4);
               }
               .MainPage__feed-commentPostBtn {
                 flex: 0;

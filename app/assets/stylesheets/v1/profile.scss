@@ -14,6 +14,17 @@ $inputHeight: 24px;
       background-color: none;
   }
 }
+.container {
+  width: 100% !important;
+.subContainer{
+  width: 100%;
+  padding: 0 5%;
+  padding-top: 20px;
+  background:rgba(255, 255, 255, 0.2 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+}
+}
 .Profile__header {
   &-avatarNInfo {
     display: flex;
