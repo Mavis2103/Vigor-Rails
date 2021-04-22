@@ -173,7 +173,9 @@
                   1
                 </div>
               </div>
-              <div class="MainPage__feed-bodyComment">
+              <div class="MainPage__feed-bodyComment" data-post_id_cmt=<%= post.id %>>
+                <%
+=begin%>
                 <% @comment.each do |cmt| %>
                 <% if cmt.post_id === post.id %>
                 <div class="MainPage__feed-bodyComment-commenters">
@@ -186,6 +188,8 @@
                 </div>
                 <% end %>
                 <% end %>
+                <%
+=end%>
               </div>
             </div>
             <div class="MainPage__feed-comment">
