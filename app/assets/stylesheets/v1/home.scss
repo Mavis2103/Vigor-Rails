@@ -17,7 +17,7 @@ $inputHeight: 24px;
 .container {
   background-color: $main-bg-color;
   width: 100% !important;
-  height: 100vh !important;
+//   height: 100vh !important;
   padding: 0 5%;
 }
 .home__header {
@@ -43,6 +43,7 @@ $inputHeight: 24px;
       @include button;
       background-color: $color-primary;
       color: white;
+      margin-right: 5px;
     }
     a:nth-child(2) {
       @include button;
@@ -63,6 +64,7 @@ $inputHeight: 24px;
     display: flex;
     flex-direction: column;
     background-color: white;
+    box-shadow: #ffe5da -15px 12px 15px 3px;
     padding: 15px 20px;
     border-radius: 15px;
     max-width: 70%;
@@ -106,6 +108,9 @@ $inputHeight: 24px;
           background-color: #bdbdbd;
           border: none;
           padding: 8px;
+          &:focus{
+            outline: none;
+        }
         }
         .MuiButtonBase-root.MuiButton-root.MuiButton-text.MainPage__header-option-darkMode {
           width: 40px;
@@ -115,12 +120,34 @@ $inputHeight: 24px;
           border: none;
           padding: 8px;
           margin-left: 5px;
+          &:focus{
+            outline: none;
+        }
         }
       }
     }
     &-input {
       display: flex;
       flex-direction: column;
+      img{
+        border-radius: 20px;
+        transition: all .5s ease-in-out;
+        &:hover {
+            width: 78.54% !important;
+            transform: translateX(13.73%);
+        }
+    }
+    video{
+        @extend img;
+        &:focus{
+            outline: none;
+        }
+    }
+    audio{
+        &:focus{
+            outline: none;
+        }
+    }
       .statusInput {
         border: none;
         border-radius: 50px;
@@ -132,6 +159,7 @@ $inputHeight: 24px;
         resize: none;
         overflow: hidden;
         @include resizeEffect();
+       
       }
       Button {
         background-color: $sub-bg-color;
@@ -205,6 +233,7 @@ $inputHeight: 24px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    margin-top: 15px;
     .MainPage__header-uploadOption-option {
       display: flex;
       input[type="file"] {
@@ -270,7 +299,7 @@ $inputHeight: 24px;
           padding: 20px;
           background-color: white;
           border-radius: 15px;
-          box-shadow: #fcf3ed 0px 48px 85px 0px;
+          box-shadow: #ffe5da -15px 12px 15px 3px;
           margin-bottom: 20px;
           &-header {
             display: flex;
@@ -312,38 +341,33 @@ $inputHeight: 24px;
             }
           }
           &-body {
-            border-bottom: 1px solid #bdbdbd;
-            padding-bottom: 15px;
+            // border-bottom: 1px solid #bdbdbd;
+            // padding-bottom: 15px;
             .MainPage__feed-bodyTitle {
-              margin-bottom: 10px;
-              white-space: pre-line;
-              p {
-                font-size: 14px;
-              }
+              margin-bottom: 5px;
+                p {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-bottom:15px;
+                    white-space: pre-line;
+                }
             }
             .MainPage__feed-bodyContent {
               margin-bottom: 15px;
-              &-img {
+              img{
                 width: 100%;
-                height: 500px;
-                border-radius: 15px;
+                border-radius: 20px;
               }
-              &-vid {
-                width: 100%;
-                height: 500px;
-                border-radius: 15px;
-                outline: none;
-              }
-              // waveform style
-              .waveform--controls {
-                margin-top: 20px;
-                .waveform__button {
-                  border: none;
-                  outline: none;
-                  border-radius: 50%;
-                  padding: 8px;
-                }
-              }
+            audio{
+              width: 100%;
+              
+                  &:focus{
+                      outline: none;
+                  }
+            }
+            video{
+              @extend img;
+            }
             }
             .MainPage__feed-bodyReaction {
               // border-top: 1px solid #BDBDBD;
@@ -390,20 +414,20 @@ $inputHeight: 24px;
               &-commenters {
                 display: flex;
                 align-items: center;
-                margin-bottom: 10px;
-                .MainPage__feed-bodyComment-avatar {
-                  .MuiAvatar-img {
-                    width: 32px;
-                    height: 32px;
-                    margin-right: 18px;
-                    border-radius: 100%;
-                    -o-object-fit: cover;
-                    object-fit: cover;
-                  }
-                }
+                // margin-bottom: 10px;
+                // .MainPage__feed-bodyComment-avatar {
+                //   .MuiAvatar-img {
+                //     width: 32px;
+                //     height: 32px;
+                //     margin-right: 18px;
+                //     border-radius: 100%;
+                //     -o-object-fit: cover;
+                //     object-fit: cover;
+                //   }
+                // }
                 .MainPage__feed-bodyComment-text {
                   font-size: 14px;
-                  margin-bottom: 0;
+                  margin-bottom: 5px;
                   .MainPage__feed-bodyComment-username {
                     margin-right: 5px;
                     font-size: 14px;
@@ -420,7 +444,7 @@ $inputHeight: 24px;
                 flex: 1;
                 outline: none;
                 border: none;
-                border-radius: 50px 0 0 50px;
+                border-radius: 50px;
                 padding: 8px 15px;
                 outline: none;
                 width: 100%;

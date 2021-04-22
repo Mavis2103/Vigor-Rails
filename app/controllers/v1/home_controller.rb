@@ -2,7 +2,9 @@ class V1::HomeController < ApplicationController
   skip_before_action :verify_authenticity_token,only: [:create,:index]
   def index
     @select = Post.select(:id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
-    # @comment = Comment.select(:id,:username,:text,:post_id).joins(:user).order(created_at: :desc)
+    @comment = Comment.select(:id,:username,:text,:post_id).joins(:user).order(created_at: :desc)
+    # @count = Comment.count_by_sql "SELECT COUNT(*) FROM comments c, posts p WHERE c.post_id = p.id"
+
     # File.open("file/image/#{@posts[0].selectedImgFile}","rb"){ |io| io.read }
   end
   def create

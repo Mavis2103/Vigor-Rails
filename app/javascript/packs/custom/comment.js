@@ -69,14 +69,14 @@ document.addEventListener("click", (e) => {
           commenters.appendChild(avatar);
           commenters.appendChild(text);
 
-          /* Avatar img */
-          let avatar_img = document.createElement("img");
-          avatar_img.alt = "avatar";
-          avatar_img.src =
-            "https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg";
-          avatar_img.classList.add("MuiAvatar-img");
+          // /* Avatar img */
+          // let avatar_img = document.createElement("img");
+          // avatar_img.alt = "avatar";
+          // avatar_img.src =
+          //   "https://res.cloudinary.com/marca/image/upload/v1610762261/rxezapdzrwbw4ritwqdy.jpg";
+          // avatar_img.classList.add("MuiAvatar-img");
 
-          avatar.appendChild(avatar_img);
+          // avatar.appendChild(avatar_img);
 
           /* Text content */
           let text_content = document.createElement("strong");
