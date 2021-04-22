@@ -5,9 +5,12 @@ let info = JSON.parse(localStorage.getItem("info"));
   if (!!token) {
     divButton.innerHTML = "";
     let logoutButton = document.createElement("a");
+    logoutButton.style.cursor = "pointer";
+    logoutButton.id = "home__header__button--logout";
     logoutButton.textContent = "Đăng xuất";
 
     let name = document.createElement("a");
+    name.style.cursor = "pointer";
     name.textContent = info.username;
     document.querySelector(
       ".MainPage__header-avatarNUserame-username"
@@ -16,6 +19,14 @@ let info = JSON.parse(localStorage.getItem("info"));
     divButton.appendChild(logoutButton);
   }
 })();
+
+document
+  .getElementById("home__header__button--logout")
+  .addEventListener("click", () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("info");
+    window.location.assign("http://localhost:3000/v1/login");
+  });
 
 let btn = document.querySelector(".postBtn");
 let mainPage_form = document.querySelector(".MainPage__header-form");
