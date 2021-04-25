@@ -3,9 +3,6 @@ class V1::HomeController < ApplicationController
   def index
     @select = Post.select(:id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id).joins(:user).order(created_at: :desc)
-    # @count = Comment.count_by_sql "SELECT COUNT(*) FROM comments c, posts p WHERE c.post_id = p.id"
-
-    # File.open("file/image/#{@posts[0].selectedImgFile}","rb"){ |io| io.read }
   end
   def create
     @image = params[:image]
@@ -47,6 +44,16 @@ class V1::HomeController < ApplicationController
   end
   def destroy
     @post = Post.find(params[:id])
+    if !@post.selectedImgFile.nil?
+      p 'img'
+      File.delete("public/file/image/#{@post.selectedImgFile}") if File.exist?("public/file/image/#{@post.selectedImgFile}")
+    elsif !@post.selectedVidFile.nil?
+      p 'video'
+      File.delete("public/file/video/#{@post.selectedVidFile}") if File.exist?("public/file/video/#{@post.selectedVidFile}")
+    elsif !@post.selectedAudFile.nil?
+      p 'audi'
+      File.delete("public/file/audio/#{@post.selectedAudFile}") if File.exist?("public/file/audio/#{@post.selectedAudFile}")
+    end
     if @post.destroy
       flash[:success] = 'Post was successfully deleted.'
       render json:{status:'success'}

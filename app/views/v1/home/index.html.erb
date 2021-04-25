@@ -186,10 +186,11 @@
                     <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"></path>
                     </svg>
+                    <% if @comment.nil? %>
                     <% @cmt = @comment.group_by(&:post_id) 
-                      p @cmt[35].length
                     %>
                     <%= @cmt[post.id].length %>
+                    <% end %>
                   </div>
                 </div>
                 <div class="MainPage__feed-bodyComment" data-post_id_cmt=<%= post.id %>>
