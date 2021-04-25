@@ -30,8 +30,11 @@
 
 /public/packs
 /public/packs-test
+/public/file/audio
+/public/file/image
+/public/file/video
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-config/database.yml
+/config/database.yml

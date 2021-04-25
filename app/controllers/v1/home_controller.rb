@@ -45,7 +45,16 @@ class V1::HomeController < ApplicationController
       render json:{status:'failed'}
     end
   end
-  
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:success] = 'Post was successfully deleted.'
+      render json:{status:'success'}
+    else
+      flash[:error] = 'Something went wrong'
+      render json:{status:'failed'}
+    end
+  end
   private
     def param_data
       params.require(:home).permit(:content,:image,:video,:audio,:type)

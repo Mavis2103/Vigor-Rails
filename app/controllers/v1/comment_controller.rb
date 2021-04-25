@@ -18,6 +18,17 @@ class V1::CommentController < ApplicationController
       end
     end
   end
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:success] = 'Comment was successfully deleted.'
+      redirect_to comments_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to comments_url
+    end
+  end
+  
   private
     def param_data
       params.require(:comment).permit(:post_id, :content_cmt)

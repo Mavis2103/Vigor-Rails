@@ -127,6 +127,8 @@ setInterval(() => {
     mainPage_submit.addEventListener("click", addPOSTs);
   }
 }, 100);
+
+/* CREATE */
 const addPOSTs = async () => {
   const rq = await fetch("/v1/home", {
     method: "POST",
@@ -145,6 +147,17 @@ const addPOSTs = async () => {
   if (rq.status === "success") {
     window.location.reload();
   }
+};
+
+/* DELETE */
+const deletePOST = async (id) => {
+  const rq = await fetch(`/v1/home/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
 };
 
 import "./comment";
