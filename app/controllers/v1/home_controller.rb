@@ -1,5 +1,5 @@
 class V1::HomeController < ApplicationController
-  skip_before_action :verify_authenticity_token,only: [:create,:index]
+  skip_before_action :verify_authenticity_token,only: [:create,:index,:destroy]
   def index
     @select = Post.select(:id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id).joins(:user).order(created_at: :desc)

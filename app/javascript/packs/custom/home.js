@@ -149,7 +149,29 @@ const addPOSTs = async () => {
   }
 };
 
-/* DELETE */
+/* ------------------------------DELETE----------------------------------- */
+
+document.body.addEventListener("mouseover", (e) => {
+  let target = e.target;
+  let post_id = target.dataset.toggle;
+  if (!!target.dataset.toggle) {
+    let save = document.querySelector(
+      ".MainPage__feed-headerOptionModal-item.save"
+    );
+    let update = document.querySelector(
+      ".MainPage__feed-headerOptionModal-item.update"
+    );
+    let del = document.querySelector(
+      ".MainPage__feed-headerOptionModal-item.delete"
+    );
+
+    /* DELETE */
+    del.addEventListener("click", () => {
+      deletePOST(post_id);
+    });
+  }
+});
+
 const deletePOST = async (id) => {
   const rq = await fetch(`/v1/home/${id}`, {
     method: "DELETE",
@@ -157,7 +179,10 @@ const deletePOST = async (id) => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  });
+  }).then((x) => x.json());
+  if (rq.status === "success") {
+    window.location.reload();
+  }
 };
 
 import "./comment";
