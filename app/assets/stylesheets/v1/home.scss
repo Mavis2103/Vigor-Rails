@@ -19,18 +19,18 @@ $inputHeight: 24px;
   @return $currentHeight;
 }
 body {
-  height: 100vh;
+  // height: 100vh;
 }
 .container {
   width: 100% !important;
-  height: 100vh;
+  // height: 100vh;
 .subContainer{
   width: 100%;
   padding-top: 20px;
   background:rgba(255, 255, 255, 0.2 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
-  height: 100vh;
+  // height: 100vh;
 }
 }
 
@@ -497,6 +497,9 @@ body {
               }
             }
             .MainPage__feed-bodyComment {
+              &-all__cmt {
+                cursor: pointer;
+              }
               &-commenters {
                 display: flex;
                 align-items: center;

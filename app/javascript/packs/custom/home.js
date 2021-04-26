@@ -17,6 +17,9 @@ let info = JSON.parse(localStorage.getItem("info"));
     ).textContent = info.username;
     divButton.appendChild(name);
     divButton.appendChild(logoutButton);
+
+    // let avatar = document.querySelector(".MuiAvatar-img");
+    // avatar.src =
   }
 })();
 
@@ -154,11 +157,13 @@ const addPOSTs = async () => {
 document.body.addEventListener("mouseover", (e) => {
   let target = e.target;
   let post_id = target.dataset.toggle;
+  let userr_id = target.dataset.user;
   let save, update, del;
   if (
     !!target.dataset.toggle &&
     target.classList.contains("MainPage__feed-headerOption")
-  ) {
+  )
+   {
     console.log(target);
     save = document.querySelector(
       ".MainPage__feed-headerOptionModal-item.save"
@@ -171,9 +176,11 @@ document.body.addEventListener("mouseover", (e) => {
     );
 
     /* DELETE */
-    del.addEventListener("click", () => {
-      deletePOST(post_id);
-    });
+    // if(JSON.parse(localStorage.getItem('info')).id == userr_id) {
+      del.addEventListener("click", () => {
+        deletePOST(post_id);
+      });
+    // }
   }
 });
 const deletePOST = async (id) => {

@@ -84,7 +84,7 @@ document.addEventListener("click", (e) => {
               delDiv.classList.add("cmt_delete");
               let delIc = document.createElement("img");
               delIc.src =
-                "https://www.flaticon.com/svg/vstatic/svg/3096/3096673.svg?token=exp=1619345125~hmac=82831db6ad1a4f3859821838231a3708";
+                "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2013/png/iconmonstr-trash-can-2.png&r=0&g=0&b=0";
               delIc.style.width = "inherit";
               delIc.style.height = "inherit";
               delIc.dataset.del_cmt = cmt.id;

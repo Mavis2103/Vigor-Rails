@@ -27,7 +27,7 @@
                   onChange={handleImageFileChange}
                 />
             </label>
-   
+
             <!-- { -->
             <!-- imageFile && ( -->
             <!-- <Button onClick={updateProfilePicture} type="submit" variant="contained" class="postBtn">Đăng</Button> -->
@@ -39,9 +39,11 @@
             <h2 class="Profile__header-avatarNInfo-info-username">KHale</h2>
             <!-- )} -->
             <div class="Profile__header-avatarNInfo-info-stats">
-               <p>
+               <p class="Profile__header-avatarNInfo-info-stats-posts">
                  <!-- {myPosts && ( -->
-                  <strong>3</strong>
+                  <strong class="Profile__header-avatarNInfo-info-stats-postsCount">
+                    <%= @post.length %>
+                  </strong>
                   <!-- )}  -->
                   bài viết
                </p>
@@ -151,3 +153,4 @@
   </div>
 </section>
 <%= javascript_pack_tag "custom/home.js", async: true%>
+<%= javascript_pack_tag "custom/profile.js", async: true%>
