@@ -18,17 +18,19 @@ $inputHeight: 24px;
   $currentHeight: $currentHeight + 10px;
   @return $currentHeight;
 }
-* {
-  box-sizing: border-box;
+body {
+  height: 100vh;
 }
 .container {
   width: 100% !important;
+  height: 100vh;
 .subContainer{
   width: 100%;
   padding-top: 20px;
   background:rgba(255, 255, 255, 0.2 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
+  height: 100vh;
 }
 }
 
@@ -151,7 +153,7 @@ $inputHeight: 24px;
         resize: none;
         overflow: hidden;
         // @include resizeEffect();
-       
+
       }
       Button {
         background-color: $sub-bg-color;
@@ -326,9 +328,9 @@ $inputHeight: 24px;
               .MainPage__feed-headerInfo {
                 margin-left: 10px;
                 &-username {
-                  
+
                     color: #784e5ec4;
-                  
+
                   margin: 0;
                   font-size: 18px;
                   font-weight: 600 !important;
@@ -348,7 +350,7 @@ $inputHeight: 24px;
                   background-color: white;
                 }
               }
-              
+
             }
             .MainPage__feed-headerOptionDiv {
               display: flex;
@@ -357,7 +359,7 @@ $inputHeight: 24px;
               .MainPage__feed-headerOption{
                 padding: 8px;
                 border-radius:100%;
-                
+
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -367,7 +369,7 @@ $inputHeight: 24px;
                 &:hover{
                   background-color: #ffe4d9;
                   cursor: pointer;
-                } 
+                }
               }
               .MainPage__feed-headerOptionModal {
                 padding: 5px;
@@ -421,7 +423,7 @@ $inputHeight: 24px;
                 }
               }
             }
-            
+
           }
           &-body {
             // border-bottom: 1px solid #bdbdbd;
@@ -443,7 +445,7 @@ $inputHeight: 24px;
               }
             audio{
               width: 100%;
-              
+
                   &:focus{
                       outline: none;
                   }
@@ -514,7 +516,7 @@ $inputHeight: 24px;
                 .MainPage__feed-bodyComment-text {
                   font-size: 14px;
                   margin-bottom: 5px;
-                  
+
                   .MainPage__feed-bodyComment-username {
                     margin-right: 5px;
                     font-size: 14px;
