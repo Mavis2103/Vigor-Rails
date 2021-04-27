@@ -28,6 +28,14 @@ class V1::CommentController < ApplicationController
       render json: {status: 'failed'}
     end
   end
+  def update
+    @cmt = Comment.find_by(id: params[:id])
+    if @cmt.update(text: params[:content_cmt])
+      render json:{status:'success'}
+    else
+      render json:{status:'failed'}
+    end
+  end
   
   private
     def param_data
