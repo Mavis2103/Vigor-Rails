@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :signup
     resources :profile
     resources :comment
+    resources :like
   end
 end
