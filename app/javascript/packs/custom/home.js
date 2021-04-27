@@ -154,33 +154,43 @@ const addPOSTs = async () => {
 
 /* ------------------------------DELETE----------------------------------- */
 
-document.body.addEventListener("mouseover", (e) => {
+let mouseOptions = document.body.addEventListener("mouseover", (e) => {
   let target = e.target;
   let post_id = target.dataset.toggle;
-  let userr_id = target.dataset.user;
+  let user_id = target.dataset.user;
   let save, update, del;
+  let edit_title = "";
   if (
     !!target.dataset.toggle &&
     target.classList.contains("MainPage__feed-headerOption")
-  )
-   {
-    console.log(target);
+  ) {
+    document.removeEventListener("mouseover", mouseOptions);
     save = document.querySelector(
-      ".MainPage__feed-headerOptionModal-item.save"
+      `.MainPage__feed-headerOptionModal-item.save[data-post_id='${post_id}']`
     );
     update = document.querySelector(
-      ".MainPage__feed-headerOptionModal-item.update"
+      `.MainPage__feed-headerOptionModal-item.update[data-post_id='${post_id}']`
     );
     del = document.querySelector(
-      ".MainPage__feed-headerOptionModal-item.delete"
+      `.MainPage__feed-headerOptionModal-item.delete[data-post_id='${post_id}']`
     );
 
-    /* DELETE */
-    // if(JSON.parse(localStorage.getItem('info')).id == userr_id) {
+    if (JSON.parse(localStorage.getItem("info")).id == user_id) {
+      /* DELETE */
       del.addEventListener("click", () => {
         deletePOST(post_id);
       });
-    // }
+      /* UPDATE */
+      edit_title = document.querySelector(
+        `.popup__edit[data-post_id='${post_id}']>input[type='text']`
+      );
+      document
+        .querySelector(`.popup__edit[data-post_id='${post_id}']>button`)
+        .addEventListener("click", () => {
+          console.log(edit_title.value);
+          edit_title.value = "";
+        });
+    }
   }
 });
 const deletePOST = async (id) => {
@@ -190,6 +200,25 @@ const deletePOST = async (id) => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
+  }).then((x) => x.json());
+  if (rq.status === "success") {
+    window.location.reload();
+  }
+};
+const updatePOST = async (id, title, file, statusFile) => {
+  const rq = await fetch(`/v1/home/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: id,
+      title: title,
+      file: file,
+      typeFile: typeFile,
+      statusFile: statusFile,
+    }),
   }).then((x) => x.json());
   if (rq.status === "success") {
     window.location.reload();

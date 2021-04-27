@@ -1,5 +1,5 @@
 class V1::HomeController < ApplicationController
-  skip_before_action :verify_authenticity_token,only: [:create,:index,:destroy]
+  skip_before_action :verify_authenticity_token,only: [:create,:index,:destroy,:update]
   def index
     @select = Post.select(:id,:user_id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id,:user_id).joins(:user).order(created_at: :desc)
@@ -63,6 +63,16 @@ class V1::HomeController < ApplicationController
       render json:{status:'failed'}
     end
   end
+  def update
+    p params
+    @post = Post.find_by(id: params[:id])
+    if @post.update(title: params[:title])
+      render json:{status:'success'}
+    else
+      render json:{status:'failed'}
+    end
+  end
+  
   private
     def param_data
       params.require(:home).permit(:content,:image,:video,:audio,:type)
