@@ -4,6 +4,7 @@ class V1::HomeController < ApplicationController
     @select = Post.select(:id,:user_id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id,:user_id).joins(:user).order(created_at: :desc)
     @user = User.select(:id,:username,:profilePicture)
+    p @user_token
   end
   def create
     @image = params[:image]

@@ -156,6 +156,7 @@
                     </div>
 
                     <%# ------------- POPUP OPTION --------------- %>
+                    <%# if post.user_id == @checkMySelf %>
                     <ul class="MainPage__feed-headerOptionModal-items">
                       <li class="MainPage__feed-headerOptionModal-item save" data-post_id=<%= post.id %>>
                         <svg id="_x31_px" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -181,6 +182,7 @@
                         <p>Xóa</p>
                       </li>
                     </ul>
+                    <%# end %>
                   </div>
                 </div>
               </div>
