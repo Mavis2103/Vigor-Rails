@@ -1,29 +1,44 @@
 document.addEventListener("mouseover", (e) => {
-  let postLike_id = e.target.dataset.postLike_id;
-  if (!!postLike_id) {
-    let element = `.MuiSvgIcon-root MainPage__feed-bodyReaction-like--like[data-postLike_id="${postLike_id}"]`;
+  let post_like_id = e.target.dataset.post_like_id;
+  let post_user_like_id = e.target.dataset.post_user_like_id;
+  // let likers = e.target.dataset.likers;
+  console.log(post_like_id);
+  if (!!post_like_id) {
+    let element = `.MainPage__feed-bodyReaction-like--like[data-post_like_id="${post_like_id}"]`;
     document.querySelector(`${element}`).addEventListener("click", (event) => {
-      fetchLIKE(postLike_id, user_id);
-      // console.log(1)
+      fetchLIKE(post_like_id);
     });
   }
+  // if (likers === JSON.parse(localStorage.getItem("info")).id) {
+  //   let elementDelete = `.MainPage__feed-bodyReaction-like--like[data-likers="${likers}"]`;
+  //   document.querySelector(`${elementDelete}`).addEventListener("click", (event) => {
+  //     deleteLIKE(likers);
+  //   });
+  // }
 
-  let fetchLIKE = async (postLike_id, user_id) => {
-    await fetch("/v1/like", {
-      method: "PATCH",
+  let fetchLIKE = async (post_like_id) => {
+    await fetch(`/v1/like/`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")} `,
       },
       body: JSON.stringify({
-        post_id: postLike_id,
-        user_id: user_id,
+        post_id: post_like_id,
       }),
-    }).then((x) => x.json());
-    if (rq.status === "success") {
-      window.location.reload();
-    }
+    }).then((x) => x.json())
   };
+
+  // let deleteLIKE = async (likers) => {
+  //   await fetch(`/v1/like/${likers}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("token")} `,
+  //     },
+  //   }).then((x) => x.json())
+  //   .then(() => window.location.reload());
+  // };
 });
 // (async () => {
 //   document.body.addEventListener("click", (e) => {
@@ -99,20 +114,24 @@ document.addEventListener("mouseover", (e) => {
 // })();
 
 /* Delete */
-
-// document.body.addEventListener("click", async (e) => {
-//   let target = e.target;
-//   if (target.classList.contains("cmt_delete")) {
-//     let cmt_id = target.dataset.del_cmt;
-//     let rq = fetch(`/v1/comment/${cmt_id}`, {
-//       method: "DELETE",
-//       headers: {
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//         "Content-Type": "application/json",
-//       },
-//     }).then((x) => x.json());
-//     if (rq.status === "success") {
-//       window.location.reload();
-//     }
-//   }
-// });
+var likers = document.querySelector(".Test").dataset.likers;
+var postLiker = document.querySelector(".Test").dataset.post_liker;
+if (likers == JSON.parse(localStorage.getItem("info")).id) {
+  document.querySelector(".Test").addEventListener("click", async (e) => {
+    console.log(1)
+      // let elementDelete = `.MainPage__feed-bodyReaction-like--like[data-likers="${likers}"]`;
+      // document.querySelector(`${elementDelete}`).addEventListener("click", (event) => {
+      //   deleteLIKE(likers);
+      // });
+      let rq = fetch(`/v1/like/${postLiker}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }).then((x) => x.json());
+      if (rq.status === "success") {
+        window.location.reload();
+      }
+  });
+}

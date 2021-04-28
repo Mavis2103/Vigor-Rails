@@ -4,6 +4,7 @@ class V1::HomeController < ApplicationController
     @select = Post.select(:id,:user_id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id,:user_id).joins(:user).order(created_at: :desc)
     @user = User.select(:id,:username,:profilePicture).where(id: @user_session[0].id)
+    @like = Like.select(:id,:user_id,:post_id)
   end
   def create
     @image = params[:image]
@@ -64,7 +65,7 @@ class V1::HomeController < ApplicationController
     end
   end
   def update
-  #  statusFile 
+  #  statusFile
   # - 0 : không up file (tức chỉ sửa title)
   # - 1 : có upfile (kiểm tra type bên server)
   @post = Post.find_by(id: params[:id])
@@ -121,7 +122,7 @@ class V1::HomeController < ApplicationController
       File.open("public/file/audio/#{uuid}.#{typeFile}",'wb') { |f| f.write(@data)}
     end
   end
-  
+
   private
     def param_data
       params.require(:home).permit(:content,:image,:video,:audio,:type,:file)

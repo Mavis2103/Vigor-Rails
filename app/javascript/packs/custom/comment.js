@@ -1,5 +1,6 @@
 document.addEventListener("click", (e) => {
   let post_id = e.target.dataset.post_id;
+  console.log(post_id)
   if (!!post_id) {
     let element = `.MainPage__feed-commentInput[data-post_id="${post_id}"]`;
     document.querySelector(`${element}`).addEventListener("keyup", (event) => {
