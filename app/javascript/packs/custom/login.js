@@ -5,12 +5,12 @@ let rs;
   let token = localStorage.getItem("token");
   if (!!token) {
     await fetch("/", {
-      method: "GET",
+      method: "HEAD",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    window.location.assign("http://localhost:3000/v1/home");
+    // window.location.assign("http://localhost:3000/v1/home");
   }
 })();
 

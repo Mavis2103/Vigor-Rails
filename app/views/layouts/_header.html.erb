@@ -10,9 +10,16 @@
         <a href="">FAQs</a>
         <div class="search"></div>
       </nav>
+      <% if !@user.nil? %>
+      <nav class="home__header__button">
+        <a href="/v1/profile"><%= @user[0].username %></a>
+        <button id="home__header__button--logout">Đăng xuất</button>
+      </nav>
+      <% else %>
       <nav class="home__header__button">
         <a href="/v1/login">Đăng nhập</a>
         <a href="/v1/signup">Đăng ký</a>
       </nav>
+      <% end %>
     </header>
   </section>

@@ -6,15 +6,13 @@
           <a href="/v1/profile">
             <div class="MainPage__header-avatarNUserame">
               <div class="MuiAvatar-root MuiAvatar-circle MainPage__header-avatarNUserame-avatar">
-                <% @user.each do |us| %>
-                <% if us.username %>
-                <img alt="avatar" src=<%= us.profilePicture %> class="MuiAvatar-img" />
+                <% if !@user[0].profilePicture.nil? %>
+                <img alt="avatar" src=<%= @user[0].profilePicture %> class="MuiAvatar-img" />
                 <% else %>
                 <img alt="avatar" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" class="MuiAvatar-img" data-ava />
                 <% end %>
-                <% end %>
               </div>
-              <strong class="MainPage__header-avatarNUserame-username"></strong>
+              <strong class="MainPage__header-avatarNUserame-username"><%= @user[0].username %></strong>
             </div>
           </a>
           <div class="MainPage__header-option">
@@ -145,18 +143,18 @@
                       <circle cx="14" cy="8" r="2" />
                     </svg>
                   </div>
+                  <% if post.user_id == @user[0].id %>
                   <div class="MainPage__feed-headerOptionModal">
                     <%# ------------- POPUP EDIT --------------- %>
                     <div>
                       <div class="popup__edit" data-post_id=<%= post.id %>>
                         <input type="text" name="title">
                         <input type="file" name="file">
-                        <button>Sửa</button>
+                        <button type="button">Sửa</button>
                       </div>
                     </div>
 
                     <%# ------------- POPUP OPTION --------------- %>
-                    <%# if post.user_id == @checkMySelf %>
                     <ul class="MainPage__feed-headerOptionModal-items">
                       <li class="MainPage__feed-headerOptionModal-item save" data-post_id=<%= post.id %>>
                         <svg id="_x31_px" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -182,8 +180,8 @@
                         <p>Xóa</p>
                       </li>
                     </ul>
-                    <%# end %>
                   </div>
+                  <% end %>
                 </div>
               </div>
               <div class="MainPage__feed-body">
@@ -231,7 +229,6 @@
                   <div class="MainPage__feed-bodyComment-commenters">
                     <div class="MuiAvatar-root MuiAvatar-circle MainPage__feed-bodyComment-avatar"></div>
                     <p class="MainPage__feed-bodyComment-text"><strong class="MainPage__feed-bodyComment-username"><%= cmt.username %></strong><%= cmt.text %></p>
-                    <% p post.user_id %>
                     <% @user.each do |uDelete| %>
                     <% if cmt.user_id === uDelete.id %>
                     <div class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: 20px; height: 20px; margin: 0px 0px 0px 20px;"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2013/png/iconmonstr-trash-can-2.png&r=0&g=0&b=0" class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: inherit; height: inherit;"></div>

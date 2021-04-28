@@ -28,7 +28,7 @@ document
   .addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("info");
-    window.location.assign("http://localhost:3000/v1/login");
+    window.location.assign("http://localhost:3000/v1/logout");
   });
 
 let btn = document.querySelector(".postBtn");
@@ -155,11 +155,12 @@ const addPOSTs = async () => {
 /* ------------------------------DELETE----------------------------------- */
 
 let mouseOptions = document.body.addEventListener("mouseover", (e) => {
+  e.preventDefault();
   let target = e.target;
   let post_id = target.dataset.toggle;
   let user_id = target.dataset.user;
   let save, update, del;
-  let edit_title = "";
+  let edit_title, edit_file, statusFile;
   if (
     !!target.dataset.toggle &&
     target.classList.contains("MainPage__feed-headerOption")
@@ -168,6 +169,7 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
     save = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.save[data-post_id='${post_id}']`
     );
+    /* Thêm event mở popup chỉnh sửa ở đây!!!! */
     update = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.update[data-post_id='${post_id}']`
     );
@@ -184,12 +186,44 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
       edit_title = document.querySelector(
         `.popup__edit[data-post_id='${post_id}']>input[type='text']`
       );
+      edit_file = document.querySelector(
+        `.popup__edit[data-post_id='${post_id}']>input[type='file']`
+      );
       document
         .querySelector(`.popup__edit[data-post_id='${post_id}']>button`)
-        .addEventListener("click", () => {
-          console.log(edit_title.value);
-          edit_title.value = "";
-        });
+        .addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            if (!!edit_title.value) {
+              statusFile = 1;
+              let reader = new FileReader();
+              if (!!edit_file.files[0]) {
+                let type = edit_file.files[0].type.split("/")[1];
+                reader.readAsDataURL(edit_file.files[0]);
+                reader.onload = async () => {
+                  let file = await reader.result;
+                  await updatePOST(
+                    post_id,
+                    edit_title.value,
+                    file,
+                    type,
+                    statusFile
+                  );
+                };
+                reader.onerror = () => {
+                  console.log("Up failed");
+                };
+              } else {
+                console.log(statusFile);
+                statusFile = 0;
+                updatePOST(post_id, edit_title.value, "", "", statusFile);
+              }
+            }
+            edit_title.value = "";
+          }
+          // { once: true }
+        );
     }
   }
 });
@@ -205,7 +239,10 @@ const deletePOST = async (id) => {
     window.location.reload();
   }
 };
-const updatePOST = async (id, title, file, statusFile) => {
+const updatePOST = async (id, title, file, typeFile, statusFile) => {
+  /* statusFile */
+  //- 0 : không up file (tức chỉ sửa title)
+  //- 1 : có upfile (kiểm tra type bên server)
   const rq = await fetch(`/v1/home/${id}`, {
     method: "PATCH",
     headers: {

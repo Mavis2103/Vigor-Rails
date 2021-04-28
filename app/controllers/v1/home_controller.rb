@@ -3,8 +3,7 @@ class V1::HomeController < ApplicationController
   def index
     @select = Post.select(:id,:user_id,:username,:title,:selectedImgFile,:selectedVidFile,:selectedAudFile,:created_at).joins(:user).order(created_at: :desc)
     @comment = Comment.select(:id,:username,:text,:post_id,:user_id).joins(:user).order(created_at: :desc)
-    @user = User.select(:id,:username,:profilePicture)
-    p @user_token
+    @user = User.select(:id,:username,:profilePicture).where(id: @user_session[0].id)
   end
   def create
     @image = params[:image]
@@ -65,17 +64,66 @@ class V1::HomeController < ApplicationController
     end
   end
   def update
-    p params
-    @post = Post.find_by(id: params[:id])
+  #  statusFile 
+  # - 0 : không up file (tức chỉ sửa title)
+  # - 1 : có upfile (kiểm tra type bên server)
+  @post = Post.find_by(id: params[:id])
+  if params[:statusFile]===0
     if @post.update(title: params[:title])
       render json:{status:'success'}
     else
       render json:{status:'failed'}
     end
+  elsif params[:statusFile]===1
+      uuid = UUID.new
+      @nameFile = uuid.generate
+      @typeFile = params[:typeFile]
+      @dataFile = params[:file]
+      writeFile(@nameFile,@typeFile,@dataFile)
+      rs = false
+      if !@post.selectedImgFile.nil?
+        p 'img'
+        rs = @post.update_columns(title: params[:title],selectedImgFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedVidFile:'')
+      elsif !@post.selectedAudFile.nil?
+        p 'aud'
+        rs = @post.update_columns(title: params[:title],selectedAudFile: "#{@nameFile}.#{@typeFile}",selectedImgFile: '', selectedVidFile:'')
+      elsif !@post.selectedVidFile.nil?
+        p 'vid'
+        rs = @post.update_columns(title: params[:title],selectedVidFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedImgFile:'')
+      else
+        case @typeFile
+        when 'jpeg'||'jpg'||'png' #image
+          rs = @post.update_columns(title: params[:title],selectedImgFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedVidFile:'')
+        when 'mp4'||'webm' #video
+          rs = @post.update_columns(title: params[:title],selectedVidFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedImgFile:'')
+        when 'mp3' #audio
+          rs = @post.update_columns(title: params[:title],selectedAudFile: "#{@nameFile}.#{@typeFile}",selectedImgFile: '', selectedVidFile:'')
+        end
+      end
+      if rs
+        render json:{status:'success'}
+      else
+        render json:{status:'failed'}
+      end
+    end
+  end
+  def writeFile(uuid,typeFile,data)
+    data_url = data
+    case typeFile
+    when 'jpeg'||'jpg'||'png' #image
+      @data = Base64.decode64(data_url["data:image/#{typeFile};base64,".length .. -1])
+      File.open("public/file/image/#{uuid}.#{typeFile}",'wb') { |f| f.write(@data)}
+    when 'mp4'||'webm' #video
+      @data = Base64.decode64(data_url["data:video/#{typeFile};base64,".length .. -1])
+      File.open("public/file/video/#{uuid}.#{typeFile}",'wb') { |f| f.write(@data)}
+    when 'mp3' #audio
+      @data = Base64.decode64(data_url["data:audio/#{typeFile};base64,".length .. -1])
+      File.open("public/file/audio/#{uuid}.#{typeFile}",'wb') { |f| f.write(@data)}
+    end
   end
   
   private
     def param_data
-      params.require(:home).permit(:content,:image,:video,:audio,:type)
+      params.require(:home).permit(:content,:image,:video,:audio,:type,:file)
     end
 end
