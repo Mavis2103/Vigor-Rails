@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Vigor</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -11,10 +12,13 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
 <body>
-<% if ((request.url() != "http://localhost:3000/v1/login") && (request.url() != "http://localhost:3000/v1/signup")) %>
+  <% p request.original_url <=> "http://localhost:3000/v1/login" %>
+  <% if ((request.original_url != "http://localhost:3000/v1/login") && (request.original_url != "http://localhost:3000/v1/signup")) %>
   <%= render "layouts/header" %>
   <% end %>
   <%= yield %>
 </body>
+
 </html>

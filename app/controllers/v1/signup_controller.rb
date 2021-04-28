@@ -1,5 +1,6 @@
 class V1::SignupController < ApplicationController
   skip_before_action :verify_authenticity_token,:require_jwt
+  skip_before_action :decodeTokenSession
   def index
     @signup = User.all;
     # render json: @signup,status: 200
