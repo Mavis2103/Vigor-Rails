@@ -9,7 +9,7 @@ class V1::LikeController < ApplicationController
     @post_id = params[:post_id]
     @user_id = @user_token[0].id
     if !@user_id.nil?
-      insert = Like.create(user_id: @user_id, post_id: @post_id).valid
+      insert = Like.create(user_id: @user_id, post_id: @post_id).valid?
       if insert
         render json: {status: 'success'}
       else
@@ -20,10 +20,8 @@ class V1::LikeController < ApplicationController
   def destroy
     @like = Like.find(params[:id])
     if @like.destroy
-      flash[:success] = 'Comment was successfully deleted.'
       render json: {status: 'success'}
     else
-      flash[:error] = 'Something went wrong'
       render json: {status: 'failed'}
     end
   end

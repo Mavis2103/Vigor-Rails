@@ -1,6 +1,5 @@
 document.addEventListener("click", (e) => {
   let post_id = e.target.dataset.post_id;
-  console.log(post_id)
   if (!!post_id) {
     let element = `.MainPage__feed-commentInput[data-post_id="${post_id}"]`;
     document.querySelector(`${element}`).addEventListener("keyup", (event) => {
@@ -14,7 +13,7 @@ document.addEventListener("click", (e) => {
   }
 
   let fetchPOST = async (post_id, content) => {
-    await fetch("/v1/comment", {
+    let rq = await fetch("/v1/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,6 +24,9 @@ document.addEventListener("click", (e) => {
         content_cmt: content,
       }),
     }).then((x) => x.json());
+    if (rq.status === "success") {
+      window.location.reload();
+    }
   };
 });
 (async () => {
@@ -106,7 +108,7 @@ document.body.addEventListener("click", async (e) => {
   let target = e.target;
   if (target.classList.contains("cmt_delete")) {
     let cmt_id = target.dataset.del_cmt;
-    let rq = fetch(`/v1/comment/${cmt_id}`, {
+    let rq = await fetch(`/v1/comment/${cmt_id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

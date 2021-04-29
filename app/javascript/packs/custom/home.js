@@ -334,5 +334,5 @@ const updatePOST = async (id, title, file, typeFile, statusFile) => {
     window.location.reload();
   }
 };
-
+import "./like";
 import "./comment";
