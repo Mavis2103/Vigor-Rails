@@ -272,6 +272,7 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
               if (!!edit_file.files[0]) {
                 let type = edit_file.files[0].type.split("/")[1];
                 reader.readAsDataURL(edit_file.files[0]);
+                console.log(edit_title.value);
                 reader.onload = async () => {
                   let file = await reader.result;
                   await updatePOST(
@@ -286,13 +287,10 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
                   console.log("Up failed");
                 };
               } else {
-                console.log(edit_title.value);
-                console.log(statusFile);
                 statusFile = 0;
                 updatePOST(post_id, edit_title.value, "", "", statusFile);
               }
             }
-            edit_title.value = "";
           }
           // { once: true }
         );
@@ -316,6 +314,7 @@ const updatePOST = async (id, title, file, typeFile, statusFile) => {
   /* statusFile */
   //- 0 : không up file (tức chỉ sửa title)
   //- 1 : có upfile (kiểm tra type bên server)
+  console.log(title);
   const rq = await fetch(`/v1/home/${id}`, {
     method: "PATCH",
     headers: {
