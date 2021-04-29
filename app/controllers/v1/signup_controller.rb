@@ -14,7 +14,8 @@ class V1::SignupController < ApplicationController
     begin
       @newUser = User.create(email: @email, username: @username, password: @password)
       if @newUser.save
-        render json: 'Completed',status:200
+        # render json: 'Completed',status:200
+        redirect_to '/v1/login'
       else
         render json: 'Failed'
       end

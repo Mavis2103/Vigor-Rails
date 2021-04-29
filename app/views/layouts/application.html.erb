@@ -15,7 +15,7 @@
 
 <body>
   <% p request.original_url <=> "http://localhost:3000/v1/login" %>
-  <% if ((request.original_url != "http://localhost:3000/v1/login") && (request.original_url != "http://localhost:3000/v1/signup")) %>
+  <% if ((request.original_url != "http://localhost:3000/v1/login") && (request.original_url != "http://localhost:3000/v1/signup") && (request.original_url != "http://localhost:3000/")) %>
   <%= render "layouts/header" %>
   <% end %>
   <%= yield %>

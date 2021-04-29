@@ -18,9 +18,9 @@ $inputHeight: 24px;
   $currentHeight: $currentHeight + 10px;
   @return $currentHeight;
 }
-body {
+// body {
   // height: 100vh;
-}
+// }
 .container {
   width: 100% !important;
   // height: 100vh;
@@ -308,6 +308,64 @@ body {
           background:rgba(255, 255, 255, 0.3 );
           box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.35 );
           margin-bottom: 20px;
+
+          .popup__edit{
+            display:none;
+            width: 1156.5px;
+            height: auto;
+            padding: 15px;
+            border-radius: 15px;
+            // background-color: red;
+            border: 1px solid whitesmoke;
+            background: rgba(255, 255, 255, 0.25 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            position: absolute;
+            font-weight: 500;
+            font-size: 16px;
+            .exitPopup{
+              img{
+                width: 16px;
+                height: 16px;
+              }
+              display: flex;
+              float: right;
+              padding: 5px;
+            }
+            .title{
+              font-size: 16px;
+              border-radius: 15px;
+              padding: 8px 15px;
+              outline: none;
+              border: 1px solid rgb(85, 85, 85);
+              background-color: rgba(240, 240, 240, 0.4);
+              width: 100%;
+              margin-top: 10px;
+              margin-bottom: 20px;
+              resize: none;
+              overflow: hidden;
+            }
+            .file{
+              width: 70%;
+              margin-bottom: 10px;
+              font-weight: 500;
+              font-size: 16px;
+            }
+            button{
+              color: rgb(0, 0, 0);
+              font-size: 16px;
+              border-radius: 50px;
+              font-weight: 500;
+              padding: 6px 16px;
+              display: flex;
+              float: right;
+              background-color: #ffa985;
+              border: 1px solid whitesmoke;
+
+            }
+          }
+
           &-header {
             display: flex;
             justify-content: space-between;
@@ -352,6 +410,7 @@ body {
               }
 
             }
+           
             .MainPage__feed-headerOptionDiv {
               display: flex;
               flex-direction: column;
@@ -371,6 +430,7 @@ body {
                   cursor: pointer;
                 }
               }
+            
               .MainPage__feed-headerOptionModal {
                 padding: 5px;
                 margin-top: 32px;
@@ -384,6 +444,7 @@ body {
                 // border: 2px solid #bdbdbd;
                 border-radius: 7.5px;
                 display: none;
+               
                 ul{
                   width: 100px;
                 .MainPage__feed-headerOptionModal-item{

@@ -3,20 +3,20 @@ let divButton = document.querySelector(".home__header__button");
 let info = JSON.parse(localStorage.getItem("info"));
 (async () => {
   if (!!token) {
-    divButton.innerHTML = "";
-    let logoutButton = document.createElement("a");
-    logoutButton.style.cursor = "pointer";
-    logoutButton.id = "home__header__button--logout";
-    logoutButton.textContent = "Đăng xuất";
+    // divButton.innerHTML = "";
+    // let logoutButton = document.createElement("a");
+    // logoutButton.style.cursor = "pointer";
+    // logoutButton.id = "home__header__button--logout";
+    // logoutButton.textContent = "Đăng xuất";
 
-    let name = document.createElement("a");
-    name.style.cursor = "pointer";
-    name.textContent = info.username;
-    document.querySelector(
-      ".MainPage__header-avatarNUserame-username"
-    ).textContent = info.username;
-    divButton.appendChild(name);
-    divButton.appendChild(logoutButton);
+    // let name = document.createElement("a");
+    // name.style.cursor = "pointer";
+    // name.textContent = info.username;
+    // document.querySelector(
+    //   ".MainPage__header-avatarNUserame-username"
+    // ).textContent = info.username;
+    // divButton.appendChild(name);
+    // divButton.appendChild(logoutButton);
 
     // let avatar = document.querySelector(".MuiAvatar-img");
     // avatar.src =
@@ -173,6 +173,17 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
     update = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.update[data-post_id='${post_id}']`
     );
+    update.addEventListener("click",(e)=>{
+        e.preventDefault();
+        let popup = document.querySelector(`.popup__edit[data-post_id='${post_id}']`);
+        popup.style.display = "block";
+    });
+    let exPopup =  document.querySelector(`.exitPopup[data-post_id='${post_id}']`);
+    exPopup.addEventListener("click",(e)=>{
+      e.preventDefault();
+      let popup = document.querySelector(`.popup__edit[data-post_id='${post_id}']`);
+      popup.style.display = "none";
+    });
     del = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.delete[data-post_id='${post_id}']`
     );

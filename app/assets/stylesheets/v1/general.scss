@@ -80,6 +80,7 @@ a {
     a {
       font-weight: bold;
       margin: 0 10px;
+      display: none;
       &:hover {
         color: $color-primary;
       }
@@ -87,6 +88,7 @@ a {
   }
   &__button {
     font-weight: bold;
+    cursor: pointer;
     a:nth-child(1) {
       @include button;
       background-color: $color-primary;
@@ -99,6 +101,12 @@ a {
       color: #000;
       box-shadow:  -3px -3px 3px rgba(255, 255, 255, 0.9), 3px 3px 3px rgba(0, 0, 0, 0.9);
 
+    }
+    #home__header__button--logout{
+      @include button;
+      color: #000;
+      box-shadow:  -3px -3px 3px rgba(255, 255, 255, 0.9), 3px 3px 3px rgba(0, 0, 0, 0.9);
+    
     }
   }
   &__logo {
