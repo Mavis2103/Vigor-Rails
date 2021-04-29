@@ -1,11 +1,11 @@
-document.addEventListener("mouseover", (e) => {
-  let post_like_id = e.target.dataset.post_like_id;
-  let post_user_like_id = e.target.dataset.post_user_like_id;
+// document.addEventListener("mouseover", (e) => {
+  let post_like_id = document.querySelector(`.MainPage__feed-bodyReaction-like--like`).dataset.post_like_id;
+  let post_user_like_id = document.querySelector(`.MainPage__feed-bodyReaction-like--like`).dataset.post_user_like_id;
   // let likers = e.target.dataset.likers;
   console.log(post_like_id);
   if (!!post_like_id) {
-    let element = `.MainPage__feed-bodyReaction-like--like[data-post_like_id="${post_like_id}"]`;
-    document.querySelector(`${element}`).addEventListener("click", (event) => {
+    let element =  document.querySelector(`.MainPage__feed-bodyReaction-like--like[data-post_like_id="${post_like_id}"]`);
+    element.addEventListener("click", (event) => {
       fetchLIKE(post_like_id);
     });
   }
@@ -26,7 +26,10 @@ document.addEventListener("mouseover", (e) => {
       body: JSON.stringify({
         post_id: post_like_id,
       }),
-    }).then((x) => x.json())
+    }).then((x) => x.json());
+    if (rq.status === "failed") {
+      window.location.reload();
+    }
   };
 
   // let deleteLIKE = async (likers) => {
@@ -39,7 +42,7 @@ document.addEventListener("mouseover", (e) => {
   //   }).then((x) => x.json())
   //   .then(() => window.location.reload());
   // };
-});
+// });
 // (async () => {
 //   document.body.addEventListener("click", (e) => {
 //     let target = e.target;
@@ -114,10 +117,10 @@ document.addEventListener("mouseover", (e) => {
 // })();
 
 /* Delete */
-var likers = document.querySelector(".Test").dataset.likers;
-var postLiker = document.querySelector(".Test").dataset.post_liker;
+var likers = document.querySelector(".MainPage__feed-bodyReaction-like--unlike").dataset.likers;
+var postLiker = document.querySelector(".MainPage__feed-bodyReaction-like--unlike").dataset.post_liker;
 if (likers == JSON.parse(localStorage.getItem("info")).id) {
-  document.querySelector(".Test").addEventListener("click", async (e) => {
+  document.querySelector(`.MainPage__feed-bodyReaction-like--unlike`).addEventListener("click", async (e) => {
     console.log(1)
       // let elementDelete = `.MainPage__feed-bodyReaction-like--like[data-likers="${likers}"]`;
       // document.querySelector(`${elementDelete}`).addEventListener("click", (event) => {
@@ -126,8 +129,8 @@ if (likers == JSON.parse(localStorage.getItem("info")).id) {
       let rq = fetch(`/v1/like/${postLiker}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((x) => x.json());
       if (rq.status === "success") {
