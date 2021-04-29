@@ -108,13 +108,13 @@
                 <input type="file" name="file" class="file">
                 <div class="viewFile">
                   <%=
-    	                if (!(post.selectedImgFile==""))
-    	                  image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
-    	                elsif (!(post.selectedVidFile==""))
-    	                  video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
-    	                elsif (!(post.selectedAudFile==""))
-    	                  audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
-                      end
+    	                  if !post.selectedImgFile.nil?
+                     image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
+                   elsif !post.selectedVidFile.nil?
+                     video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
+                   elsif !post.selectedAudFile.nil?
+                     audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
+                   end
     	              %>
                 </div>
                 <button type="button"> Sửa</button>
@@ -209,14 +209,13 @@
                 <div class="MainPage__feed-bodyContent">
                   <% p "URLLLL:#{!(post.selectedVidFile=="")}" %>
                   <%=
-    	                if (!(post.selectedImgFile==""))
-    	                  image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
-    	                elsif (!(post.selectedVidFile==""))
-    	                  video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
-    	                elsif (!(post.selectedAudFile==""))
-    	                  audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
-    	              
-                      end
+    	                if !post.selectedImgFile.nil?
+                     image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
+                   elsif !post.selectedVidFile.nil?
+                     video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
+                   elsif !post.selectedAudFile.nil?
+                     audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
+                   end
     	              %>
                 </div>
                 <div class="MainPage__feed-bodyReaction">
