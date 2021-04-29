@@ -8,7 +8,6 @@ let info = JSON.parse(localStorage.getItem("info"));
     // logoutButton.style.cursor = "pointer";
     // logoutButton.id = "home__header__button--logout";
     // logoutButton.textContent = "Đăng xuất";
-
     // let name = document.createElement("a");
     // name.style.cursor = "pointer";
     // name.textContent = info.username;
@@ -17,7 +16,6 @@ let info = JSON.parse(localStorage.getItem("info"));
     // ).textContent = info.username;
     // divButton.appendChild(name);
     // divButton.appendChild(logoutButton);
-
     // let avatar = document.querySelector(".MuiAvatar-img");
     // avatar.src =
   }
@@ -152,6 +150,8 @@ const addPOSTs = async () => {
   }
 };
 
+let once = false;
+
 /* ------------------------------DELETE----------------------------------- */
 
 let mouseOptions = document.body.addEventListener("mouseover", (e) => {
@@ -161,11 +161,11 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
   let user_id = target.dataset.user;
   let save, update, del;
   let edit_title, edit_file, statusFile;
+  let viewFile;
   if (
     !!target.dataset.toggle &&
     target.classList.contains("MainPage__feed-headerOption")
   ) {
-    document.removeEventListener("mouseover", mouseOptions);
     save = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.save[data-post_id='${post_id}']`
     );
@@ -173,15 +173,21 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
     update = document.querySelector(
       `.MainPage__feed-headerOptionModal-item.update[data-post_id='${post_id}']`
     );
-    update.addEventListener("click",(e)=>{
-        e.preventDefault();
-        let popup = document.querySelector(`.popup__edit[data-post_id='${post_id}']`);
-        popup.style.display = "block";
-    });
-    let exPopup =  document.querySelector(`.exitPopup[data-post_id='${post_id}']`);
-    exPopup.addEventListener("click",(e)=>{
+    update.addEventListener("click", (e) => {
       e.preventDefault();
-      let popup = document.querySelector(`.popup__edit[data-post_id='${post_id}']`);
+      let popup = document.querySelector(
+        `.popup__edit[data-post_id='${post_id}']`
+      );
+      popup.style.display = "block";
+    });
+    let exPopup = document.querySelector(
+      `.exitPopup[data-post_id='${post_id}']`
+    );
+    exPopup.addEventListener("click", (e) => {
+      e.preventDefault();
+      let popup = document.querySelector(
+        `.popup__edit[data-post_id='${post_id}']`
+      );
       popup.style.display = "none";
     });
     del = document.querySelector(
@@ -193,18 +199,72 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
       del.addEventListener("click", () => {
         deletePOST(post_id);
       });
+      let file;
+
+      document
+        .querySelector(
+          `.popup__edit[data-post_id='${post_id}']>input[type='file']`
+        )
+        .addEventListener("change", (e) => {
+          file = e.target.files[0];
+          if (!!file) {
+            let reader = new FileReader();
+            let type = file.type.split("/")[1];
+            viewFile = document.querySelector(
+              `.popup__edit[data-post_id='${post_id}']>.viewFile`
+            );
+            viewFile.innerHTML = "";
+            let preview;
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+              let data = reader.result;
+              switch (type) {
+                case "jpeg" || "jpg" || "png":
+                  preview = document.createElement("img");
+                  preview.src = data;
+                  // preview.style.width = "200";
+                  break;
+
+                case "mp4" || "webm":
+                  preview = document.createElement("video");
+                  preview.src = data;
+                  preview.controls = true;
+                  preview.volume = 1;
+                  // preview.style.width = "200";
+                  break;
+
+                case "mp3":
+                  preview = document.createElement("audio");
+                  preview.src = data;
+                  preview.controls = true;
+                  preview.volume = 1;
+                  // preview.style.width = "200";
+                  break;
+
+                default:
+                  break;
+              }
+              viewFile.appendChild(preview);
+            };
+            reader.onerror = () => {};
+          }
+        });
+
       /* UPDATE */
-      edit_title = document.querySelector(
-        `.popup__edit[data-post_id='${post_id}']>input[type='text']`
-      );
-      edit_file = document.querySelector(
-        `.popup__edit[data-post_id='${post_id}']>input[type='file']`
-      );
       document
         .querySelector(`.popup__edit[data-post_id='${post_id}']>button`)
         .addEventListener(
           "click",
           (event) => {
+            edit_title = document.querySelector(
+              `.popup__edit[data-post_id='${post_id}']>input[type='text']`
+            );
+            edit_file = document.querySelector(
+              `.popup__edit[data-post_id='${post_id}']>input[type='file']`
+            );
+            viewFile = document.querySelector(
+              `.popup__edit[data-post_id='${post_id}']>.viewFile`
+            );
             event.preventDefault();
             if (!!edit_title.value) {
               statusFile = 1;
@@ -226,6 +286,7 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
                   console.log("Up failed");
                 };
               } else {
+                console.log(edit_title.value);
                 console.log(statusFile);
                 statusFile = 0;
                 updatePOST(post_id, edit_title.value, "", "", statusFile);
@@ -237,6 +298,7 @@ let mouseOptions = document.body.addEventListener("mouseover", (e) => {
         );
     }
   }
+  document.removeEventListener("mouseover", mouseOptions);
 });
 const deletePOST = async (id) => {
   const rq = await fetch(`/v1/home/${id}`, {

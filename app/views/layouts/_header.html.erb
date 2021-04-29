@@ -11,12 +11,14 @@
         <div class="search"></div>
       </nav>
       <nav class="home__header__button">
-      <% if !@user.nil? %>
+        <% if !@user.nil? %>
         <a href="/v1/profile"><%= @user_session[0].username %></a>
+        <% p request.original_url != "http://localhost:3000/v1/profile" %>
+        <% if ((request.original_url != "http://localhost:3000/v1/profile"))%>
         <a id="home__header__button--logout">Đăng xuất</a>
-      <% else %>
-        <a href="/v1/login">Đăng nhập</a>
-        <a href="/v1/signup">Đăng ký</a>
+        <% else %>
+        <a href="http://localhost:3000/v1/home">Về trang chủ</a>
+        <% end %>
       </nav>
       <% end %>
     </header>

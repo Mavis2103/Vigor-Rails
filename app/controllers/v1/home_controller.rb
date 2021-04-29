@@ -82,16 +82,16 @@ class V1::HomeController < ApplicationController
       @dataFile = params[:file]
       writeFile(@nameFile,@typeFile,@dataFile)
       rs = false
-      if !@post.selectedImgFile.nil?
-        p 'img'
-        rs = @post.update_columns(title: params[:title],selectedImgFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedVidFile:'')
-      elsif !@post.selectedAudFile.nil?
-        p 'aud'
-        rs = @post.update_columns(title: params[:title],selectedAudFile: "#{@nameFile}.#{@typeFile}",selectedImgFile: '', selectedVidFile:'')
-      elsif !@post.selectedVidFile.nil?
-        p 'vid'
-        rs = @post.update_columns(title: params[:title],selectedVidFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedImgFile:'')
-      else
+      # if !@post.selectedImgFile.nil?
+      #   p 'img'
+      #   rs = @post.update_columns(title: params[:title],selectedImgFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedVidFile:'')
+      # elsif !@post.selectedAudFile.nil?
+      #   p 'aud'
+      #   rs = @post.update_columns(title: params[:title],selectedAudFile: "#{@nameFile}.#{@typeFile}",selectedImgFile: '', selectedVidFile:'')
+      # elsif !@post.selectedVidFile.nil?
+      #   p 'vid'
+      #   rs = @post.update_columns(title: params[:title],selectedVidFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedImgFile:'')
+      # else
         case @typeFile
         when 'jpeg'||'jpg'||'png' #image
           rs = @post.update_columns(title: params[:title],selectedImgFile: "#{@nameFile}.#{@typeFile}",selectedAudFile: '', selectedVidFile:'')
@@ -100,7 +100,7 @@ class V1::HomeController < ApplicationController
         when 'mp3' #audio
           rs = @post.update_columns(title: params[:title],selectedAudFile: "#{@nameFile}.#{@typeFile}",selectedImgFile: '', selectedVidFile:'')
         end
-      end
+      # end
       if rs
         render json:{status:'success'}
       else

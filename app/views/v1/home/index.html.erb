@@ -6,15 +6,13 @@
           <a href="/v1/profile">
             <div class="MainPage__header-avatarNUserame">
               <div class="MuiAvatar-root MuiAvatar-circle MainPage__header-avatarNUserame-avatar">
-                <% @user.each do |us| %>
-                <% if us.username %>
+                <% if !@user[0].profilePicture.nil? %>
                 <img alt="avatar" src=<%= us.profilePicture %> class="MuiAvatar-img" />
                 <% else %>
                 <img alt="avatar" src="https://banner2.cleanpng.com/20180629/ru/kisspng-computer-icons-user-background-icon-5b35b73f4812b6.2941272015302469752952.jpg" class="MuiAvatar-img" data-ava />
                 <% end %>
-                <% end %>
               </div>
-              <strong class="MainPage__header-avatarNUserame-username"></strong>
+              <strong class="MainPage__header-avatarNUserame-username"><%= @user[0].username %></strong>
             </div>
           </a>
           <div class="MainPage__header-option">
@@ -101,16 +99,25 @@
           <div class="masonry-grid_column" style="width: 100%">
             <% @select.each do |post| %>
             <div class="MainPage__feed">
-              <div>
               <div class="popup__edit" data-post_id=<%= post.id %>>
-                  <div class="exitPopup" data-post_id=<%= post.id %>>
+                <div class="exitPopup" data-post_id=<%= post.id %>>
                   <img src="https://pics.freeicons.io/uploads/icons/png/8699422471541068766-512.png">
-                  </div>
-                    <label>Nội dung chỉnh sửa</label>
-                    <input type="text" name="title" class="title" placeholder="<%= post.title%>">
-                    <input type="file" name="file" class="file">
-                    <button type="button"> Sửa</button>
-              </div>
+                </div>
+                <label>Nội dung chỉnh sửa</label>
+                <input type="text" name="title" class="title" value=<%= post.title%>>
+                <input type="file" name="file" class="file">
+                <div class="viewFile">
+                  <%=
+    	                if (!(post.selectedImgFile==""))
+    	                  image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
+    	                elsif (!(post.selectedVidFile==""))
+    	                  video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
+    	                elsif (!(post.selectedAudFile==""))
+    	                  audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
+                      end
+    	              %>
+                </div>
+                <button type="button"> Sửa</button>
               </div>
 
               <div class="MainPage__feed-header">
@@ -118,7 +125,7 @@
                   <div class="MainPage__feed-headerAvatar">
                     <a href="/v1/profile/">
                       <div class="MuiAvatar-root MuiAvatar-circle">
-                        
+
 
 
 
@@ -149,7 +156,7 @@
     	                %>
                   </div>
                 </div>
-                 
+
                 <div class="MainPage__feed-headerOptionDiv" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
                   <div class="MainPage__feed-headerOption" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
                     <svg version="1.1" id="Layer_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
@@ -160,10 +167,10 @@
                   </div>
                   <div class="MainPage__feed-headerOptionModal">
                     <%# ------------- POPUP EDIT --------------- %>
-             
 
-                  <% if post.user_id == @user[0].id %>
-                  
+
+                    <% if post.user_id == @user[0].id %>
+
                     <%# ------------- POPUP OPTION --------------- %>
                     <%# if post.user_id == @checkMySelf %>
                     <ul class="MainPage__feed-headerOptionModal-items">
@@ -200,14 +207,16 @@
                   <p><%= post.title %></p>
                 </div>
                 <div class="MainPage__feed-bodyContent">
+                  <% p "URLLLL:#{!(post.selectedVidFile=="")}" %>
                   <%=
-    	                if !post.selectedImgFile.nil?
+    	                if (!(post.selectedImgFile==""))
     	                  image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
-    	                elsif !post.selectedVidFile.nil?
+    	                elsif (!(post.selectedVidFile==""))
     	                  video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
-    	                elsif !post.selectedAudFile.nil?
+    	                elsif (!(post.selectedAudFile==""))
     	                  audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
-    	                end
+    	              
+                      end
     	              %>
                 </div>
                 <div class="MainPage__feed-bodyReaction">
@@ -215,19 +224,23 @@
                     <svg class="MuiSvgIcon-root MainPage__feed-bodyReaction-like--like" data-post_like_id=<%= post.id %> data-post_user_like_id=<%= post.user_id %> viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
                     </svg>
-                    <p class="Test" data-likers=<%= @like[0].user_id %> data-post_liker=<%= @like[0].id %> >Test</p>
-                      <p class="MainPage__feed-bodyReaction-like-likeNumber">
-                        <% if @like.length>0 %>
-                            <% @likke =  @like.group_by(&:post_id) %>
-                              <% if @likke[post.id] %>
-                                <%= @likke[post.id].length %>
-                                  <% else %>
-                                  <%= 0 %>
-                                <% end %>
-                              <% else %>
-                            <%= 0 %>
-                        <% end %>
-                      </p>
+                    <%
+=begin%>
+                    <p class="Test" data-likers=<%= @like[0].user_id %> data-post_liker=<%= @like[0].id %>>Test</p>
+                    <%
+=end%>
+                    <p class="MainPage__feed-bodyReaction-like-likeNumber">
+                      <% if @like.length>0 %>
+                      <% @likke =  @like.group_by(&:post_id) %>
+                      <% if @likke[post.id] %>
+                      <%= @likke[post.id].length %>
+                      <% else %>
+                      <%= 0 %>
+                      <% end %>
+                      <% else %>
+                      <%= 0 %>
+                      <% end %>
+                    </p>
                   </div>
                   <div class="MainPage__feed-bodyReaction-cmt">
                     <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">

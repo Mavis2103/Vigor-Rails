@@ -1,181 +1,86 @@
 <section class="container">
   <div class="subContainer">
-     <div class="Profile__header">
+    <div class="Profile__header">
       <div class="Profile__header-avatarNInfo">
-         <div>
-            <label htmlFor="updateAvatar">
-               <div class="updateAvatar--upload">
-                  <!-- {imageFile ? ( -->
-                  <div class="MainPage__header-uploadOptionBody-imageDiv">
-                     <div class="Profile__header-avatarNInfo-avatar">
-                      <% if !@user[0].profilePicture.nil? %>
-                        <img alt="avatar" src=<%= @user[0].profilePicture %> class="MuiAvatar-img" />
-                        <% else %>
-                        <img alt="avatar" src="https://banner2.cleanpng.com/20180629/ru/kisspng-computer-icons-user-background-icon-5b35b73f4812b6.2941272015302469752952.jpg" class="MuiAvatar-img" data-ava />
-                      <% end %>
-                     </div>
-                  </div>
-                  <!-- ) : ( -->
-                  <!-- getUsername.profilePicture ? ( -->
-                  <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" /> -->
-                  <!-- ) : ( -->
-                  <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src='' /> -->
-                  <!-- ) -->
-                  <!-- )} -->
-               </div>
-               <input
-                  type="file"
-                  name=""
-                  id="updateAvatar"
-                  accept=".jpeg, .jpg, .png, .jfif, .pjpeg, .pjp"
-                  onChange={handleImageFileChange}
-                />
-            </label>
-
-            <!-- { -->
-            <!-- imageFile && ( -->
-            <!-- <Button onClick={updateProfilePicture} type="submit" variant="contained" class="postBtn">Đăng</Button> -->
-            <!-- ) -->
-            <!-- } -->
-         </div>
-         <div class="Profile__header-avatarNInfo-info">
-            <!-- {localStorage.getItem('jwt') && ( -->
-            <h2 class="Profile__header-avatarNInfo-info-username"><%= @user_session[0].username %></h2>
-            <!-- )} -->
-            <div class="Profile__header-avatarNInfo-info-stats">
-               <p class="Profile__header-avatarNInfo-info-stats-posts">
-                 <!-- {myPosts && ( -->
-                  <strong class="Profile__header-avatarNInfo-info-stats-postsCount">
-                    <%= @post.length %>
-                  </strong>
-                  <!-- )}  -->
-                  bài viết
-               </p>
-               <p class="Profile__header-avatarNInfo-info-stats-followerStat">
-                 <!-- {myPosts && ( -->
-                  <strong onClick={handleShowFollwers}>2</strong>
-                  <!-- )}  -->
-                  Người theo dõi
-               </p>
-               <p class="Profile__header-avatarNInfo-info-stats-followingStat">Đang theo dõi
-                 <!-- {myPosts && ( -->
-                  <strong onClick={handleShow}>1</strong>
-                  <!-- )} -->
-               </p>
+        <div>
+          <label htmlFor="updateAvatar">
+            <div class="updateAvatar--upload">
+              <!-- {imageFile ? ( -->
+              <div class="MainPage__header-uploadOptionBody-imageDiv">
+                <div class="Profile__header-avatarNInfo-avatar">
+                  <% if !@user[0].profilePicture.nil? %>
+                  <img alt="avatar" src=<%= @user[0].profilePicture %> class="MuiAvatar-img" />
+                  <% else %>
+                  <img alt="avatar" src="https://banner2.cleanpng.com/20180629/ru/kisspng-computer-icons-user-background-icon-5b35b73f4812b6.2941272015302469752952.jpg" class="MuiAvatar-img" data-ava />
+                  <% end %>
+                </div>
+              </div>
+              <!-- ) : ( -->
+              <!-- getUsername.profilePicture ? ( -->
+              <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src="http://res.cloudinary.com/marca/image/upload/v1610554657/ymeiqgqdm2jdj416veg2.jpg" /> -->
+              <!-- ) : ( -->
+              <!-- <Avatar class="Profile__header-avatarNInfo-avatar" alt="Khale" src='' /> -->
+              <!-- ) -->
+              <!-- )} -->
             </div>
-            <!-- {/* Followings modal */} -->
-            <!-- <Modal
-            // {...props}
-            show={modalShow}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            onHide={handleClose}
-            // key={liker._id}
-            >
-            <Modal.Header>
-               <Modal.Title id="contained-modal-title-vcenter">
-                  Đang theo dõi
-               </Modal.Title>
-               <Avatar>
-                  <CloseIcon
-                     onClick={handleClose}
-                     />
-               </Avatar>
-            </Modal.Header>
-            <ModalBody
-               class="Profile__followingModal"
-               bsPrefix='modal-body'
-               >
-               {getUsername.following.map(listFollowing => (
-               <div key={listFollowing._id} class="Profile__followingModal-modal">
-                  <Avatar class="Profile__followingModal-followingAvatar" alt="avatar" src={listFollowing.profilePicture} />
-                  <h1>{listFollowing.username}</h1>
-               </div>
-               ))}
-            </ModalBody>
-            </Modal> -->
-            <!-- {/* Followers modal */} -->
-            <!-- <Modal
-            // {...props}
-            show={modalShowFollowers}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            onHide={handleCloseFollowers}
-            // key={liker._id}
-            >
-            <Modal.Header>
-               <Modal.Title id="contained-modal-title-vcenter">
-                  Người theo dõi
-               </Modal.Title>
-               <Avatar>
-                  <CloseIcon
-                     onClick={handleCloseFollowers}
-                     />
-               </Avatar>
-            </Modal.Header>
-            <Modal.Body class="Profile__followerModal">
-               {getUsername.followers.map(listFollower => (
-               <div key={listFollower._id} class="Profile__followerModal-modal">
-                  <Avatar class="Profile__followerModal-followerAvatar" alt="avatar" src={listFollower.profilePicture} />
-                  <h1>{listFollower.username}</h1>
-               </div>
-               ))}
-            </Modal.Body>
-            </Modal> -->
-         </div>
+            <input type="file" name="" id="updateAvatar" accept=".jpeg, .jpg, .png, .jfif, .pjpeg, .pjp" onChange={handleImageFileChange} />
+          </label>
+
+          <!-- { -->
+          <!-- imageFile && ( -->
+          <!-- <Button onClick={updateProfilePicture} type="submit" variant="contained" class="postBtn">Đăng</Button> -->
+          <!-- ) -->
+          <!-- } -->
+        </div>
+        <div class="Profile__header-avatarNInfo-info">
+          <!-- {localStorage.getItem('jwt') && ( -->
+          <h2 class="Profile__header-avatarNInfo-info-username"><%= @user_session[0].username %></h2>
+          <!-- )} -->
+          <div class="Profile__header-avatarNInfo-info-stats">
+            <p class="Profile__header-avatarNInfo-info-stats-posts">
+              <!-- {myPosts && ( -->
+              <strong class="Profile__header-avatarNInfo-info-stats-postsCount">
+                <%= @post.length %>
+              </strong>
+              <!-- )}  -->
+              bài viết
+            </p>
+          </div>
+        </div>
       </div>
       <div class="Profile__header-action">
-         <div class="Profile__header-action-tabs">
-            <div class="Profile__header-action-tabs-tabsList">
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'TỔNG QUAN', root_path%>
-               </div>
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'BÀI VIẾT', '/v1/profile'%>
-               </div>
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'PLAYLIST', '/v1/profile'%>
-               </div>
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'NGHỆ SĨ', '/v1/profile'%>
-               </div>
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'ALBUM', '/v1/profile'%>
-               </div>
-               <div class="Profile__header-action-tabs-tabsList-tab">
-                  <%= link_to 'TẢI LÊN', '/v1/profile'%>
-               </div>
-            </div>
-         </div>
+        <div class="Profile__header-action-tabs">
+          <div class="Profile__header-action-tabs-tabsList">
+
+          </div>
+        </div>
       </div>
-   </div>
-   <div class="Profile__body">
-     <div class="masonry-grid">
-       <div class="masonry-grid_column" style="width: 100%">
-         <% @select.each do |post| %>
-           <div class="MainPage__profileFeed">
-             <div class="MainPage__profileFeed-header">
-               <div class="MainPage__profileFeed-headerAvatarNInfo">
-                 <div class="MainPage__profileFeed-headerAvatar">
-                   <a href="v1/profile/">
-                     <div class="MuiAvatar-root MuiAvatar-circle">
-                      
+    </div>
+    <div class="Profile__body">
+      <div class="masonry-grid">
+        <div class="masonry-grid_column" style="width: 100%">
+          <% @select.each do |post| %>
+          <div class="MainPage__profileFeed">
+            <div class="MainPage__profileFeed-header">
+              <div class="MainPage__profileFeed-headerAvatarNInfo">
+                <div class="MainPage__profileFeed-headerAvatar">
+                  <a href="v1/profile/">
+                    <div class="MuiAvatar-root MuiAvatar-circle">
 
 
 
 
 
-                     </div>
-                   </a>
-                 </div>
-                 <div class="MainPage__profileFeed-headerInfo">
-                   <strong class="MainPage__profileFeed-headerInfo-username"><%= post.username %></strong>
-                   <p class="MainPage__profileFeed-headerInfo-createAt">
-                     <%= post.created_at %>
-                   </p>
-                   <%#
+
+                    </div>
+                  </a>
+                </div>
+                <div class="MainPage__profileFeed-headerInfo">
+                  <strong class="MainPage__profileFeed-headerInfo-username"><%= post.username %></strong>
+                  <p class="MainPage__profileFeed-headerInfo-createAt">
+                    <%= post.created_at %>
+                  </p>
+                  <%#
                    <div
                      class="MuiCollapse-container MainPage__profileFeed-headerInfo-detail MuiCollapse-hidden"
                      style="min-height: 0px"
@@ -187,116 +92,116 @@
                      </div>
                    </div>
                    %>
-                 </div>
-               </div>
-               <div class="MainPage__profileFeed-headerOptionDiv" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
-                 <div class="MainPage__profileFeed-headerOption" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
-                   <svg version="1.1" id="Layer_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
-                     <circle cx="2" cy="8" r="2" />
-                     <circle cx="8" cy="8" r="2" />
-                     <circle cx="14" cy="8" r="2" />
-                   </svg>
-                 </div>
-                  <% if post.user_id == @user[0].id %>
-                 <div class="MainPage__profileFeed-headerOptionModal">
-                   <ul class="MainPage__profileFeed-headerOptionModal-items">
-                     <li class="MainPage__profileFeed-headerOptionModal-item save">
-                       <svg id="_x31_px" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
-                         <path d="m14.199 24.002c-1.035 0-1.907-.521-2.141-1.364-.119-.425-.052-.889.188-1.306.337-.583.969-1.031 1.734-1.229 1.363-.35 2.667.2 2.96 1.258.119.425.052.889-.188 1.306-.337.583-.969 1.031-1.734 1.229-.278.072-.553.106-.819.106zm.595-3.002c-.182 0-.372.023-.563.073-.5.128-.918.413-1.118.759-.074.129-.15.327-.092.539.142.51.943.765 1.747.558.5-.128.918-.413 1.118-.759.074-.129.15-.327.092-.539-.108-.39-.599-.631-1.184-.631z" />
-                         <path d="m21.199 23.002c-1.035 0-1.907-.521-2.141-1.364-.119-.425-.052-.889.188-1.306.337-.583.969-1.031 1.734-1.229 1.362-.35 2.667.2 2.96 1.258.119.425.052.889-.188 1.306-.337.583-.969 1.031-1.734 1.229-.278.072-.553.106-.819.106zm.595-3.002c-.182 0-.372.023-.563.073-.5.128-.918.413-1.118.759-.074.129-.15.327-.092.539.142.51.942.765 1.747.558.5-.128.918-.413 1.118-.759.074-.129.15-.327.092-.539-.108-.39-.599-.631-1.184-.631z" />
-                         <path d="m16.5 22.246c-.276 0-.5-.224-.5-.5v-7.246c0-.249.183-.46.43-.495l7-1c.144-.02.289.023.397.117.111.095.173.233.173.378v7.25c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-6.673l-6 .857v6.812c0 .276-.224.5-.5.5z" />
-                         <path d="m16.5 12c-.276 0-.5-.224-.5-.5v-6.5h-13.5c-1.379 0-2.5-1.122-2.5-2.5s1.121-2.5 2.5-2.5h12c.276 0 .5.224.5.5v3.5h1.5c.276 0 .5.224.5.5v7c0 .276-.224.5-.5.5zm-14-11c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5h11.5v-3z" />
-                         <path d="m9.5 22h-7c-1.379 0-2.5-1.122-2.5-2.5v-17c0-.276.224-.5.5-.5s.5.224.5.5v17c0 .827.673 1.5 1.5 1.5h7c.276 0 .5.224.5.5s-.224.5-.5.5z" /></svg>
-                       <p>Lưu</p>
-                     </li>
-                     <li class="MainPage__profileFeed-headerOptionModal-item update">
-                       <svg height="401pt" viewBox="0 -1 401.52289 401" width="401pt" xmlns="http://www.w3.org/2000/svg">
-                         <path d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0" />
-                         <path d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0" /></svg>
-                       <p>Sửa</p>
-                     </li>
-                     <li class="MainPage__profileFeed-headerOptionModal-item delete">
-                       <svg height="427pt" viewBox="-40 0 427 427.00131" width="427pt" xmlns="http://www.w3.org/2000/svg">
-                         <path d="m232.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" />
-                         <path d="m114.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" />
-                         <path d="m28.398438 127.121094v246.378906c0 14.5625 5.339843 28.238281 14.667968 38.050781 9.285156 9.839844 22.207032 15.425781 35.730469 15.449219h189.203125c13.527344-.023438 26.449219-5.609375 35.730469-15.449219 9.328125-9.8125 14.667969-23.488281 14.667969-38.050781v-246.378906c18.542968-4.921875 30.558593-22.835938 28.078124-41.863282-2.484374-19.023437-18.691406-33.253906-37.878906-33.257812h-51.199218v-12.5c.058593-10.511719-4.097657-20.605469-11.539063-28.03125-7.441406-7.421875-17.550781-11.5546875-28.0625-11.46875h-88.796875c-10.511719-.0859375-20.621094 4.046875-28.0625 11.46875-7.441406 7.425781-11.597656 17.519531-11.539062 28.03125v12.5h-51.199219c-19.1875.003906-35.394531 14.234375-37.878907 33.257812-2.480468 19.027344 9.535157 36.941407 28.078126 41.863282zm239.601562 279.878906h-189.203125c-17.097656 0-30.398437-14.6875-30.398437-33.5v-245.5h250v245.5c0 18.8125-13.300782 33.5-30.398438 33.5zm-158.601562-367.5c-.066407-5.207031 1.980468-10.21875 5.675781-13.894531 3.691406-3.675781 8.714843-5.695313 13.925781-5.605469h88.796875c5.210937-.089844 10.234375 1.929688 13.925781 5.605469 3.695313 3.671875 5.742188 8.6875 5.675782 13.894531v12.5h-128zm-71.199219 32.5h270.398437c9.941406 0 18 8.058594 18 18s-8.058594 18-18 18h-270.398437c-9.941407 0-18-8.058594-18-18s8.058593-18 18-18zm0 0" />
-                         <path d="m173.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" /></svg>
-                       <p>Xóa</p>
-                     </li>
-                   </ul>
-                 </div>
-                   <% end %>
-               </div>
-             </div>
-             <div class="MainPage__profileFeed-body">
-               <div class="MainPage__profileFeed-bodyTitle">
-                 <p><%= post.title %></p>
-               </div>
-               <div class="MainPage__profileFeed-bodyContent">
-                 <%=
-                   if !post.selectedImgFile.nil?
-                     image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
-                   elsif !post.selectedVidFile.nil?
-                     video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
-                   elsif !post.selectedAudFile.nil?
-                     audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
-                   end
-                 %>
-               </div>
-               <div class="MainPage__profileFeed-bodyReaction">
-                 <div class="MainPage__profileFeed-bodyReaction-like">
-                   <svg class="MuiSvgIcon-root MainPage__profileFeed-bodyReaction-like--like" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                   </svg>
-                   <p class="MainPage__profileFeed-bodyReaction-like-likeNumber">1</p>
-                 </div>
-                 <div class="MainPage__profileFeed-bodyReaction-cmt">
-                   <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                     <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"></path>
-                   </svg>
-                   <% if @comment.length>0 %>
-                     <% @cmt =  @comment.group_by(&:post_id) %>
-                       <% if @cmt[post.id] %>
-                         <%= @cmt[post.id].length %>
-                         <% else %>
-                           <%= 0 %>
-                       <% end %>
-                       <% else %>
-                       <%= 0 %>
-                     <% end %>
-                 </div>
-               </div>
-               <div class="MainPage__profileFeed-bodyComment" data-post_id_cmt=<%= post.id %>>
-                 <% @comment.each do |cmt| %>
-                 <% if cmt.post_id == post.id %>
-                 <strong class="MainPage__profileFeed-bodyComment-all__cmt" data-post_id_cmt=<%= post.id %>>Xem tất cả bình luận</strong>
-                 <div class="MainPage__profileFeed-bodyComment-commenters">
-                   <div class="MuiAvatar-root MuiAvatar-circle MainPage__profileFeed-bodyComment-avatar"></div>
-                   <p class="MainPage__profileFeed-bodyComment-text"><strong class="MainPage__profileFeed-bodyComment-username"><%= cmt.username %></strong><%= cmt.text %></p>
-    <% p post.user_id %>
-                    <% @user.each do |uDelete| %>
-                     <% if cmt.user_id === uDelete.id %>
-                         <div class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: 20px; height: 20px; margin: 0px 0px 0px 20px;"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2013/png/iconmonstr-trash-can-2.png&r=0&g=0&b=0" class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: inherit; height: inherit;"></div>
-                         <% else %>
-                     <% end %>
-                     <% end %>
-                 </div>
-                 <% break %>
-                 <% end %>
-                 <% end %>
-               </div>
-             </div>
-             <div class="MainPage__profileFeed-comment">
-               <div class="MainPage__profileFeed-commentForm">
-                 <input class="MainPage__profileFeed-commentInput" data-post_id=<%= post.id %> type="text" placeholder="Thêm bình luận..." />
-               </div>
-             </div>
-           </div>
-         <% end %>
-       </div>
-     </div>
-   </div>
-   </div>
+                </div>
+              </div>
+              <div class="MainPage__profileFeed-headerOptionDiv" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
+                <div class="MainPage__profileFeed-headerOption" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
+                  <svg version="1.1" id="Layer_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve" data-toggle=<%= post.id %> data-user=<%= post.user_id %>>
+                    <circle cx="2" cy="8" r="2" />
+                    <circle cx="8" cy="8" r="2" />
+                    <circle cx="14" cy="8" r="2" />
+                  </svg>
+                </div>
+                <% if post.user_id == @user[0].id %>
+                <div class="MainPage__profileFeed-headerOptionModal">
+                  <ul class="MainPage__profileFeed-headerOptionModal-items">
+                    <li class="MainPage__profileFeed-headerOptionModal-item save">
+                      <svg id="_x31_px" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m14.199 24.002c-1.035 0-1.907-.521-2.141-1.364-.119-.425-.052-.889.188-1.306.337-.583.969-1.031 1.734-1.229 1.363-.35 2.667.2 2.96 1.258.119.425.052.889-.188 1.306-.337.583-.969 1.031-1.734 1.229-.278.072-.553.106-.819.106zm.595-3.002c-.182 0-.372.023-.563.073-.5.128-.918.413-1.118.759-.074.129-.15.327-.092.539.142.51.943.765 1.747.558.5-.128.918-.413 1.118-.759.074-.129.15-.327.092-.539-.108-.39-.599-.631-1.184-.631z" />
+                        <path d="m21.199 23.002c-1.035 0-1.907-.521-2.141-1.364-.119-.425-.052-.889.188-1.306.337-.583.969-1.031 1.734-1.229 1.362-.35 2.667.2 2.96 1.258.119.425.052.889-.188 1.306-.337.583-.969 1.031-1.734 1.229-.278.072-.553.106-.819.106zm.595-3.002c-.182 0-.372.023-.563.073-.5.128-.918.413-1.118.759-.074.129-.15.327-.092.539.142.51.942.765 1.747.558.5-.128.918-.413 1.118-.759.074-.129.15-.327.092-.539-.108-.39-.599-.631-1.184-.631z" />
+                        <path d="m16.5 22.246c-.276 0-.5-.224-.5-.5v-7.246c0-.249.183-.46.43-.495l7-1c.144-.02.289.023.397.117.111.095.173.233.173.378v7.25c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-6.673l-6 .857v6.812c0 .276-.224.5-.5.5z" />
+                        <path d="m16.5 12c-.276 0-.5-.224-.5-.5v-6.5h-13.5c-1.379 0-2.5-1.122-2.5-2.5s1.121-2.5 2.5-2.5h12c.276 0 .5.224.5.5v3.5h1.5c.276 0 .5.224.5.5v7c0 .276-.224.5-.5.5zm-14-11c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5h11.5v-3z" />
+                        <path d="m9.5 22h-7c-1.379 0-2.5-1.122-2.5-2.5v-17c0-.276.224-.5.5-.5s.5.224.5.5v17c0 .827.673 1.5 1.5 1.5h7c.276 0 .5.224.5.5s-.224.5-.5.5z" /></svg>
+                      <p>Lưu</p>
+                    </li>
+                    <li class="MainPage__profileFeed-headerOptionModal-item update">
+                      <svg height="401pt" viewBox="0 -1 401.52289 401" width="401pt" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0" />
+                        <path d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0" /></svg>
+                      <p>Sửa</p>
+                    </li>
+                    <li class="MainPage__profileFeed-headerOptionModal-item delete">
+                      <svg height="427pt" viewBox="-40 0 427 427.00131" width="427pt" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m232.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" />
+                        <path d="m114.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" />
+                        <path d="m28.398438 127.121094v246.378906c0 14.5625 5.339843 28.238281 14.667968 38.050781 9.285156 9.839844 22.207032 15.425781 35.730469 15.449219h189.203125c13.527344-.023438 26.449219-5.609375 35.730469-15.449219 9.328125-9.8125 14.667969-23.488281 14.667969-38.050781v-246.378906c18.542968-4.921875 30.558593-22.835938 28.078124-41.863282-2.484374-19.023437-18.691406-33.253906-37.878906-33.257812h-51.199218v-12.5c.058593-10.511719-4.097657-20.605469-11.539063-28.03125-7.441406-7.421875-17.550781-11.5546875-28.0625-11.46875h-88.796875c-10.511719-.0859375-20.621094 4.046875-28.0625 11.46875-7.441406 7.425781-11.597656 17.519531-11.539062 28.03125v12.5h-51.199219c-19.1875.003906-35.394531 14.234375-37.878907 33.257812-2.480468 19.027344 9.535157 36.941407 28.078126 41.863282zm239.601562 279.878906h-189.203125c-17.097656 0-30.398437-14.6875-30.398437-33.5v-245.5h250v245.5c0 18.8125-13.300782 33.5-30.398438 33.5zm-158.601562-367.5c-.066407-5.207031 1.980468-10.21875 5.675781-13.894531 3.691406-3.675781 8.714843-5.695313 13.925781-5.605469h88.796875c5.210937-.089844 10.234375 1.929688 13.925781 5.605469 3.695313 3.671875 5.742188 8.6875 5.675782 13.894531v12.5h-128zm-71.199219 32.5h270.398437c9.941406 0 18 8.058594 18 18s-8.058594 18-18 18h-270.398437c-9.941407 0-18-8.058594-18-18s8.058593-18 18-18zm0 0" />
+                        <path d="m173.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0" /></svg>
+                      <p>Xóa</p>
+                    </li>
+                  </ul>
+                </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="MainPage__profileFeed-body">
+              <div class="MainPage__profileFeed-bodyTitle">
+                <p><%= post.title %></p>
+              </div>
+              <div class="MainPage__profileFeed-bodyContent">
+                <%=
+    	                if (!(post.selectedImgFile==""))
+    	                  image_tag "/file/image/#{post.selectedImgFile}", width: '100%'
+    	                elsif (!(post.selectedVidFile==""))
+    	                  video_tag "/file/video/#{post.selectedVidFile}", width: '100%', controls: true, volume: '1'
+    	                elsif (!(post.selectedAudFile==""))
+    	                  audio_tag "/file/audio/#{post.selectedAudFile}", width: '100%', controls: true, volume: '1'
+    	                end
+    	              %>
+              </div>
+              <div class="MainPage__profileFeed-bodyReaction">
+                <div class="MainPage__profileFeed-bodyReaction-like">
+                  <svg class="MuiSvgIcon-root MainPage__profileFeed-bodyReaction-like--like" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                  </svg>
+                  <p class="MainPage__profileFeed-bodyReaction-like-likeNumber">1</p>
+                </div>
+                <div class="MainPage__profileFeed-bodyReaction-cmt">
+                  <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H6l-2 2V5c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"></path>
+                  </svg>
+                  <% if @comment.length>0 %>
+                  <% @cmt =  @comment.group_by(&:post_id) %>
+                  <% if @cmt[post.id] %>
+                  <%= @cmt[post.id].length %>
+                  <% else %>
+                  <%= 0 %>
+                  <% end %>
+                  <% else %>
+                  <%= 0 %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="MainPage__profileFeed-bodyComment" data-post_id_cmt=<%= post.id %>>
+                <% @comment.each do |cmt| %>
+                <% if cmt.post_id == post.id %>
+                <strong class="MainPage__profileFeed-bodyComment-all__cmt" data-post_id_cmt=<%= post.id %>>Xem tất cả bình luận</strong>
+                <div class="MainPage__profileFeed-bodyComment-commenters">
+                  <div class="MuiAvatar-root MuiAvatar-circle MainPage__profileFeed-bodyComment-avatar"></div>
+                  <p class="MainPage__profileFeed-bodyComment-text"><strong class="MainPage__profileFeed-bodyComment-username"><%= cmt.username %></strong><%= cmt.text %></p>
+                  <% p post.user_id %>
+                  <% @user.each do |uDelete| %>
+                  <% if cmt.user_id === uDelete.id %>
+                  <div class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: 20px; height: 20px; margin: 0px 0px 0px 20px;"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2013/png/iconmonstr-trash-can-2.png&r=0&g=0&b=0" class="cmt_delete" data-del_cmt=<%= cmt.id %> style="width: inherit; height: inherit;"></div>
+                  <% else %>
+                  <% end %>
+                  <% end %>
+                </div>
+                <% break %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="MainPage__profileFeed-comment">
+              <div class="MainPage__profileFeed-commentForm">
+                <input class="MainPage__profileFeed-commentInput" data-post_id=<%= post.id %> type="text" placeholder="Thêm bình luận..." />
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 <%= javascript_pack_tag "custom/home.js", async: true%>
