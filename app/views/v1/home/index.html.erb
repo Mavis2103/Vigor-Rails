@@ -7,7 +7,7 @@
             <div class="MainPage__header-avatarNUserame">
               <div class="MuiAvatar-root MuiAvatar-circle MainPage__header-avatarNUserame-avatar">
                 <% if !@user[0].profilePicture.nil? %>
-                <img alt="avatar" src=<%= us.profilePicture %> class="MuiAvatar-img" />
+                <img alt="avatar" src=<%= @user[0].profilePicture %> class="MuiAvatar-img" />
                 <% else %>
                 <img alt="avatar" src="https://banner2.cleanpng.com/20180629/ru/kisspng-computer-icons-user-background-icon-5b35b73f4812b6.2941272015302469752952.jpg" class="MuiAvatar-img" data-ava />
                 <% end %>
