@@ -1,3 +1,58 @@
 // Place all the styles related to the like controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$color-primary: rgba(255, 159, 103, 1);
+$main-bg-color: #fcf9f7;
+$sub-bg-color: #ffa985;
+$text-color: #32323d;
+$text-hover-color: #ffc6ad;
+$input-bg-color: rgb(240, 240, 240);
+$inputHeight: 24px;
+.MainPage__feed-bodyReaction {
+    // border-top: 1px solid #BDBDBD;
+    // border-bottom: 1px solid #BDBDBD;
+    border-radius: 12px;
+    background-color: rgba(240, 240, 240, 0.4);
+    border: 2px solid whitesmoke;
+    padding: 10px;
+    display: flex;
+    margin-bottom: 15px;
+    &-like {
+      margin-right: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &--like {
+        color: $sub-bg-color;
+        margin-right: 5px;
+        width: 24px;
+        cursor: pointer;
+      }
+      &--unlike {
+        color: $sub-bg-color;
+        margin-right: 5px;
+        width: 24px;
+        cursor: pointer;
+      }
+      &-likeNumber {
+        cursor: default;
+      }
+      &--unlike {
+        margin-right: 5px;
+        cursor: pointer;
+      }
+      &-unlikeNumber {
+        cursor: default;
+      }
+    }
+    &-cmt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        width: 24px;
+        margin-right: 5px;
+      }
+    }
+  }

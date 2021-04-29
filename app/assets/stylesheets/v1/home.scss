@@ -563,6 +563,12 @@ $inputHeight: 24px;
                   width: 24px;
                   cursor: pointer;
                 }
+                &--unlike {
+                  color: $sub-bg-color;
+                  margin-right: 5px;
+                  width: 24px;
+                  cursor: pointer;
+                }
                 &-likeNumber {
                   cursor: default;
                 }
